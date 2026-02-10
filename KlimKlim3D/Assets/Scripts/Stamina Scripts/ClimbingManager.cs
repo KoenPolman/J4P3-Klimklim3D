@@ -5,7 +5,6 @@ public class ClimbingManager : MonoBehaviour
 {
     public List<StaminaLimb> allLimbs;
     
-    [Header("Drain Rates (Positive = Drain, Negative = Regrow)")]
     public float rate3Limbs = 2f;  // Slow drain
     public float rate2Limbs = 10f; // Moderate
     public float rate1Limb = 25f;  // Fast

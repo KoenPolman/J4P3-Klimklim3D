@@ -1,39 +1,72 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class StaminaWheelUI : MonoBehaviour
 {
     public StaminaLimb targetLimb;
     public Image donutFill;
     
-    // We use CanvasGroup instead of GameObject for visibility
-    private CanvasGroup canvasGroup; 
+    [Header("Visual Tweaks")]
+    public float fadeSpeed = 10f;
+    public Gradient staminaColor; // Set this in the Inspector!
+    
+    [Header("Panic Settings (Low Stamina)")]
+    public float panicThreshold = 0.25f; // Starts at 25%
+    public float pulseSpeed = 15f;
+    public float pulseAmount = 0.1f;
 
-    void Start()
+    private CanvasGroup canvasGroup;
+    private Vector3 originalScale;
+
+    void Awake()
     {
-        // Automatically find the CanvasGroup on this object
         canvasGroup = GetComponent<CanvasGroup>();
-        
-        if (canvasGroup == null)
-        {
-            Debug.LogError($"Please add a CanvasGroup component to {gameObject.name}!");
-        }
+        originalScale = transform.localScale;
+        canvasGroup.alpha = 0; 
     }
 
     void Update()
     {
-        if (targetLimb == null || canvasGroup == null) return;
+        if (targetLimb == null || donutFill == null) return;
 
-        if (targetLimb.currentState == LimbState.OnHold)
+        float ratio = targetLimb.currentStamina / targetLimb.maxStamina;
+
+        // 1. Smooth Fade In/Out
+        float targetAlpha = (targetLimb.currentState == LimbState.OnHold) ? 1f : 0f;
+        canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
+
+        if (canvasGroup.alpha > 0)
         {
-            // Make it visible
-            canvasGroup.alpha = 1f;
-            donutFill.fillAmount = targetLimb.currentStamina / targetLimb.maxStamina;
+            // 2. Update Fill
+            donutFill.fillAmount = ratio;
+
+            // 3. Update Color (Green -> Orange -> Red)
+            // Evaluates the gradient based on 0.0 to 1.0
+            donutFill.color = staminaColor.Evaluate(ratio);
+
+            // 4. Panic Pulse Logic
+            HandlePulse(ratio);
         }
         else
         {
-            // Make it invisible but keep the script running
-            canvasGroup.alpha = 0f;
+            // Reset scale when hidden so it doesn't stay "bloated"
+            transform.localScale = originalScale;
+        }
+    }
+
+    void HandlePulse(float ratio)
+    {
+        if (ratio <= panicThreshold)
+        {
+            // Simple Sine wave math for a heartbeat effect
+            float pulse = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
+            transform.localScale = originalScale * pulse;
+        }
+        else
+        {
+            // Return to normal size if we recover stamina
+            transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * 5f);
         }
     }
 }
