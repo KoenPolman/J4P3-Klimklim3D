@@ -7,22 +7,30 @@ public class StaminaWheelUI : MonoBehaviour
     public StaminaLimb targetLimb;
     public Image donutFill;
     
+    [Header("Positioning")]
+    public bool followHandPosition = true;
+    public Vector3 offset = new Vector3(0, 100, 0); // Pixels above hand
+
     [Header("Visual Tweaks")]
     public float fadeSpeed = 10f;
-    public Gradient staminaColor; // Set this in the Inspector!
+    public Gradient staminaColor; 
     
-    [Header("Panic Settings (Low Stamina)")]
-    public float panicThreshold = 0.25f; // Starts at 25%
+    [Header("Panic Settings")]
+    public float panicThreshold = 0.25f; 
     public float pulseSpeed = 15f;
     public float pulseAmount = 0.1f;
 
     private CanvasGroup canvasGroup;
+    private RectTransform rectTransform;
     private Vector3 originalScale;
+    private Camera mainCam;
 
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        rectTransform = GetComponent<RectTransform>();
         originalScale = transform.localScale;
+        mainCam = Camera.main;
         canvasGroup.alpha = 0; 
     }
 
@@ -30,42 +38,48 @@ public class StaminaWheelUI : MonoBehaviour
     {
         if (targetLimb == null || donutFill == null) return;
 
+        // 1. Logic: Follow the hand in screen space
+        if (followHandPosition)
+        {
+            UpdatePosition();
+        }
+
         float ratio = targetLimb.currentStamina / targetLimb.maxStamina;
 
-        // 1. Smooth Fade In/Out
+        // 2. Smooth Fade
         float targetAlpha = (targetLimb.currentState == LimbState.OnHold) ? 1f : 0f;
         canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
         if (canvasGroup.alpha > 0)
         {
-            // 2. Update Fill
             donutFill.fillAmount = ratio;
-
-            // 3. Update Color (Green -> Orange -> Red)
-            // Evaluates the gradient based on 0.0 to 1.0
             donutFill.color = staminaColor.Evaluate(ratio);
-
-            // 4. Panic Pulse Logic
             HandlePulse(ratio);
         }
         else
         {
-            // Reset scale when hidden so it doesn't stay "bloated"
             transform.localScale = originalScale;
         }
+    }
+
+    void UpdatePosition()
+    {
+        // Convert the 3D Hand position to a 2D Screen position
+        Vector3 screenPos = mainCam.WorldToScreenPoint(targetLimb.transform.position);
+        
+        // Apply to the UI element
+        rectTransform.position = screenPos + offset;
     }
 
     void HandlePulse(float ratio)
     {
         if (ratio <= panicThreshold)
         {
-            // Simple Sine wave math for a heartbeat effect
             float pulse = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
             transform.localScale = originalScale * pulse;
         }
         else
         {
-            // Return to normal size if we recover stamina
             transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * 5f);
         }
     }
