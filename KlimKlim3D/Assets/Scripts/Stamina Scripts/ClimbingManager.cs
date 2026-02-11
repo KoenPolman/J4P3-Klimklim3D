@@ -5,13 +5,12 @@ public class ClimbingManager : MonoBehaviour
 {
     public List<StaminaLimb> allLimbs;
     
-    [Header("Drain Rates (Positive = Drain, Negative = Regrow)")]
     public float rate3Limbs = 2f;  // Slow drain
     public float rate2Limbs = 10f; // Moderate
     public float rate1Limb = 25f;  // Fast
 
-    // Logic: 4 limbs = negative of 3 limbs rate
-    private float Rate4Limbs => -rate3Limbs; 
+    // Logic: 4 limbs = negative of 1 limbs rate
+    private float Rate4Limbs => -rate1Limb; 
 
     void Update()
     {
@@ -25,14 +24,14 @@ public class ClimbingManager : MonoBehaviour
 
         foreach (var limb in allLimbs)
         {
-            // If we are holding, apply drain or regeneration
+            // If limbs are holding, apply drain or regeneration
             if (limb.currentState == LimbState.OnHold)
             {
                 limb.currentStamina -= currentRate * Time.deltaTime;
                 limb.currentStamina = Mathf.Clamp(limb.currentStamina, 0, limb.maxStamina);
             }
             
-            // If NOTHING is holding, everybody falls
+            // If NOTHING is holding, all limbs fall
             if (activeCount == 0)
             {
                 limb.currentState = LimbState.Falling;
