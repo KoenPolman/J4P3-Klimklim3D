@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,31 +6,42 @@ public class HandMovement : MonoBehaviour
 {
     [SerializeField] HandType handType;
     [SerializeField] float maxRadius;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float moveSpeed = 10f;
 
-    Transform shoulderPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Vector3 targetPosition;
+
+    private void Awake()
     {
-        shoulderPosition = transform.parent;
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        targetPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Vector3 mousePos = new Vector3();
-        mousePos = Input.mousePosition;
-        Debug.Log(mousePos);
-        // if the mouse button bound to the hand in not down place the hand
-        if (!Input.GetMouseButtonDown((int)handType))
+        UpdateTargetPosition();
+        MoveTowardsTarget();
+    }
+
+    private void UpdateTargetPosition()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
         {
-            placeHand();
+            targetPosition = hit.point;
         }
     }
-    /// <summary>
-    /// place the hand at the mouse position
-    /// </summary>
-    void placeHand()
-    {
 
+    private void MoveTowardsTarget()
+    {
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            moveSpeed * Time.deltaTime
+        );
     }
 }
