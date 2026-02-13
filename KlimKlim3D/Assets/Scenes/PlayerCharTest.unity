@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   handType: 1
-  maxRadius: 1
+  maxRadius: 2
   mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
