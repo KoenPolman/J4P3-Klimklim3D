@@ -11,9 +11,10 @@ public class HandMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     private Vector3 targetPosition;
-    private Vector3 shoulderposition;
+    private Vector3 shoulderPosition;
+    private Vector3 restingPosition;
     private Func<bool> mouseInput;
-    private bool isHolding;
+    private bool isHolding = true;
 
     private void Awake()
     {
@@ -30,15 +31,20 @@ public class HandMovement : MonoBehaviour
             mainCamera = Camera.main;
 
         targetPosition = transform.position;
-        shoulderposition = transform.parent.transform.position;
+        shoulderPosition = transform.parent.transform.position;
+        restingPosition = transform.parent.GetChild(1).position;
     }
 
     private void Update()
     {
-        if (!mouseInput())
+        if (!mouseInput() && isHolding)
         {
             UpdateTargetPosition();
             MoveTowardsTarget();
+        }
+        else
+        {
+            MoveToRest();
         }
     }
 
@@ -54,11 +60,11 @@ public class HandMovement : MonoBehaviour
 
     private void MoveTowardsTarget()
     {
-        if(Vector3.Distance(shoulderposition, targetPosition) >= maxRadius)
+        if(Vector3.Distance(shoulderPosition, targetPosition) >= maxRadius)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                GetPointOnCircle(shoulderposition, targetPosition, maxRadius),
+                GetPointOnCircle(shoulderPosition, targetPosition, maxRadius),
                 moveSpeed * Time.deltaTime
             );
         }
@@ -66,10 +72,18 @@ public class HandMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                targetPosition,
+                new Vector3(targetPosition.x, targetPosition.y, 0),
                 moveSpeed * Time.deltaTime
             );
         }
+    }
+    private void MoveToRest()
+    {
+        transform.position = Vector3.MoveTowards(
+                transform.position,
+                restingPosition,
+                moveSpeed * Time.deltaTime
+            );
     }
     private Vector3 GetPointOnCircle(Vector3 center, Vector3 target, float radius)
     {
