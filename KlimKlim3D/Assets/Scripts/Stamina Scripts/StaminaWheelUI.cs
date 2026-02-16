@@ -9,7 +9,7 @@ public class StaminaWheelUI : MonoBehaviour
     
     [Header("Positioning")]
     public bool followHandPosition = true;
-    public Vector3 offset = new Vector3(0, 100, 0); // Pixels above hand
+    public Vector3 offset = new Vector3(0, 100, 0);
 
     [Header("Visual Tweaks")]
     public float fadeSpeed = 10f;
@@ -19,10 +19,12 @@ public class StaminaWheelUI : MonoBehaviour
     public float panicThreshold = 0.25f; 
     public float pulseSpeed = 15f;
     public float pulseAmount = 0.1f;
+    public float jitterAmount = 5f; // Kracht van het trillen
 
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     private Vector3 originalScale;
+    private Vector3 targetScreenPos;
     private Camera mainCam;
 
     void Awake()
@@ -38,15 +40,11 @@ public class StaminaWheelUI : MonoBehaviour
     {
         if (targetLimb == null || donutFill == null) return;
 
-        // 1. Logic: Follow the hand in screen space
-        if (followHandPosition)
-        {
-            UpdatePosition();
-        }
+        if (followHandPosition) UpdatePosition();
 
         float ratio = targetLimb.currentStamina / targetLimb.maxStamina;
 
-        // 2. Smooth Fade
+        // Fade in/out op basis van state
         float targetAlpha = (targetLimb.currentState == LimbState.OnHold) ? 1f : 0f;
         canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
@@ -54,33 +52,42 @@ public class StaminaWheelUI : MonoBehaviour
         {
             donutFill.fillAmount = ratio;
             donutFill.color = staminaColor.Evaluate(ratio);
-            HandlePulse(ratio);
+            HandlePanicEffects(ratio);
         }
         else
         {
-            transform.localScale = originalScale;
+            ResetVisuals();
         }
     }
 
     void UpdatePosition()
     {
-        // Convert the 3D Hand position to a 2D Screen position
+        // Volg de 3D hand in 2D UI space
         Vector3 screenPos = mainCam.WorldToScreenPoint(targetLimb.transform.position);
-        
-        // Apply to the UI element
-        rectTransform.position = screenPos + offset;
+        targetScreenPos = screenPos + offset;
+        rectTransform.position = targetScreenPos;
     }
 
-    void HandlePulse(float ratio)
+    void HandlePanicEffects(float ratio)
     {
         if (ratio <= panicThreshold)
         {
+            // Hartslag Pulse
             float pulse = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
             transform.localScale = originalScale * pulse;
+
+            // Paniek Trilling (Jitter)
+            Vector3 shake = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0) * jitterAmount;
+            rectTransform.position = targetScreenPos + shake;
         }
         else
         {
-            transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * 5f);
+            ResetVisuals();
         }
+    }
+
+    void ResetVisuals()
+    {
+        transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * 5f);
     }
 }
