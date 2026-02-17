@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 75681407463183244}
   - component: {fileID: 4255235394931480690}
   - component: {fileID: 2097981428589109990}
+  - component: {fileID: 2124959933900897700}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,6 +240,34 @@ MonoBehaviour:
   rate3Limbs: 10
   rate2Limbs: 15
   rate1Limb: 25
+--- !u!114 &2124959933900897700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881880693263165239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e5aada7781f454bbfaf7c6697d5978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  mainCamera: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  leftHandGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  rightHandGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  leftHandRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  rightHandRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4856876339864474356
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +281,7 @@ GameObject:
   - component: {fileID: 2610971195218975234}
   - component: {fileID: 7707870527255421466}
   - component: {fileID: 6046496120029839889}
+  - component: {fileID: 3913694169664883893}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -343,7 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  handType: 1
   maxRadius: 2
   mainCamera: {fileID: 0}
   groundLayer:
@@ -364,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
   type: 0
   interactionKey: 0
-  currentState: 0
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -373,6 +402,19 @@ MonoBehaviour:
   OnRelease:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3913694169664883893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856876339864474356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
 --- !u!1 &5438356195133497986
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +581,8 @@ GameObject:
   - component: {fileID: 6360574566172066507}
   - component: {fileID: 2367135577264742833}
   - component: {fileID: 6979590489830342168}
+  - component: {fileID: 592328491195913192}
+  - component: {fileID: 331208823402579835}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -630,10 +674,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  handType: 0
   maxRadius: 2
   mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+--- !u!114 &592328491195913192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842160456049861255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
+--- !u!114 &331208823402579835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842160456049861255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
+  type: 0
+  interactionKey: 0
+  limbInfo: {fileID: 0}
+  maxStamina: 100
+  currentStamina: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []

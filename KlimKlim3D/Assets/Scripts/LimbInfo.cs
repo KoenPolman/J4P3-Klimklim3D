@@ -13,6 +13,10 @@ public class LimbInfo : MonoBehaviour
     {
         state = newState;
     }
+    /// <summary>
+    /// Gets the type of this limb, left foot, right hand, etc
+    /// </summary>
+    /// <returns></returns>
     public LimbType GetTypeStrict()
     {
         return type;

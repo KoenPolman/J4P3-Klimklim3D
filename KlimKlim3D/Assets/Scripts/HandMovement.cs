@@ -1,7 +1,5 @@
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem;
 //dit script moet gerefactord worden want het doet te veel -Koen
 public class HandMovement : MonoBehaviour
 {
@@ -15,8 +13,8 @@ public class HandMovement : MonoBehaviour
     private Vector3 shoulderPosition;
     private Vector3 restingPosition;
 
-    private Func<bool> mouseInput;
     private LimbInfo limbInfo;
+    private PlayerInput playerInput;
 
     private void Awake()
     {           
@@ -26,6 +24,8 @@ public class HandMovement : MonoBehaviour
         mousePosition = transform.position;
         shoulderPosition = transform.parent.transform.position;
         restingPosition = transform.parent.GetChild(1).position;
+        limbInfo = GetComponent<LimbInfo>();
+        playerInput = transform.parent.parent.GetComponent<PlayerInput>();
     }
 
     private void Update()

@@ -10,15 +10,18 @@ public class StaminaLimb : MonoBehaviour
     
     [Header("Stamina Settings")]
     public float maxStamina = 100f;
-    public float currentStamina;
-    
-    public UnityEvent OnGrab;
-    public UnityEvent OnRelease;
+    [HideInInspector] public float currentStamina;
+
+    [HideInInspector] public UnityEvent OnGrab;
+    [HideInInspector] public UnityEvent OnRelease;
 
     void Start()
     {
         currentStamina = maxStamina;
-        limbInfo = GetComponent<LimbInfo>();
+        if (limbInfo == null)
+        {
+            limbInfo = GetComponent<LimbInfo>();
+        }
     }
 
     void Update()
