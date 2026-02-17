@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 3175993033291280742}
   - component: {fileID: 75681407463183244}
   - component: {fileID: 4255235394931480690}
+  - component: {fileID: 2097981428589109990}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -222,6 +223,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b933e5b926e0b92448c17a82b4b7d964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2097981428589109990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881880693263165239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fa19a23c334e046a43d53aed3e6927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClimbingManager
+  allLimbs: []
+  rate3Limbs: 10
+  rate2Limbs: 15
+  rate1Limb: 25
 --- !u!1 &4856876339864474356
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +251,7 @@ GameObject:
   - component: {fileID: 689708719800974617}
   - component: {fileID: 2610971195218975234}
   - component: {fileID: 7707870527255421466}
+  - component: {fileID: 6046496120029839889}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -332,6 +350,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+--- !u!114 &6046496120029839889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856876339864474356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
+  type: 0
+  interactionKey: 0
+  currentState: 0
+  maxStamina: 100
+  currentStamina: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5438356195133497986
 GameObject:
   m_ObjectHideFlags: 0

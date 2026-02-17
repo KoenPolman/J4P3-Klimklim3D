@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class ClimbingManager : MonoBehaviour
 {
-    public List<StaminaLimb> allLimbs;
+    public List<LimbInfo> allLimbs;
     
     [Header("Base Drain Rates")]
     public float rate3Limbs = 10f;  
@@ -20,10 +21,10 @@ public class ClimbingManager : MonoBehaviour
         // Tel actieve ledematen en specifiek actieve voeten
         foreach (var limb in allLimbs)
         {
-            if (limb.currentState == LimbState.OnHold)
+            if (limb.GetState() == LimbState.holding)
             {
                 activeCount++;
-                if (limb.type == LimbType.Foot) feetActive++;
+                if (limb.GetTypeStrict() == LimbType.LeftFoot || limb.GetTypeStrict() == LimbType.RightFoot) feetActive++;
             }
         }
 
@@ -42,24 +43,24 @@ public class ClimbingManager : MonoBehaviour
 
         foreach (var limb in allLimbs)
         {
-            if (limb.currentState == LimbState.OnHold)
+            if (limb.GetState() == LimbState.holding)
             {
                 float finalRate = baseRate;
 
                 // Alleen handen profiteren van de voet-multiplier bij verbruik
-                if (limb.type == LimbType.Hand && baseRate > 0)
+                if ((limb.GetTypeStrict() == LimbType.LeftHand || limb.GetTypeStrict() == LimbType.RightHand) && baseRate > 0)
                 {
                     finalRate *= footMultiplier;
                 }
-
-                limb.currentStamina -= finalRate * Time.deltaTime;
-                limb.currentStamina = Mathf.Clamp(limb.currentStamina, 0, limb.maxStamina);
+                StaminaLimb staminaLimb = limb.GetComponent<StaminaLimb>();
+                staminaLimb.currentStamina -= finalRate * Time.deltaTime;
+                staminaLimb.currentStamina = Mathf.Clamp(staminaLimb.currentStamina, 0, staminaLimb.maxStamina);
             }
             
             // Als NIETS wordt vastgehouden, valt de speler
             if (activeCount == 0)
             {
-                limb.currentState = LimbState.Falling;
+                // voeg logica toe voor vallen of beter voeg hier later een call toe naar de core playermovement
             }
         }
     }

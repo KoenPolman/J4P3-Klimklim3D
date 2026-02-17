@@ -1,70 +1,69 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+//dit script moet gerefactord worden want het doet te veel -Koen
 public class HandMovement : MonoBehaviour
 {
-    [SerializeField] HandType handType;
     [SerializeField] float maxRadius;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float moveSpeed = 10f;
 
-    private Vector3 targetPosition;
+    private Vector3 holdPosition;
+    private Vector3 mousePosition;
     private Vector3 shoulderPosition;
     private Vector3 restingPosition;
+
     private Func<bool> mouseInput;
-    private bool isHolding = true;
+    private LimbInfo limbInfo;
 
     private void Awake()
-    {
-        switch (handType)
-        {
-            case HandType.Right:
-                mouseInput = () => Mouse.current.rightButton.IsPressed();
-                break;
-            case HandType.Left:
-                mouseInput = () => Mouse.current.leftButton.IsPressed();
-                break;
-        }            
+    {           
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        targetPosition = transform.position;
+        mousePosition = transform.position;
         shoulderPosition = transform.parent.transform.position;
         restingPosition = transform.parent.GetChild(1).position;
     }
 
     private void Update()
     {
-        if (!mouseInput() && isHolding)
+        UpdateMousePosition();
+        switch (limbInfo.GetState())
         {
-            UpdateTargetPosition();
-            MoveTowardsTarget();
-        }
-        else
-        {
-            MoveToRest();
+            case LimbState.resting:
+                MoveToRest();
+                break;
+            case LimbState.holding:
+                MoveToHold();
+                break;
+            case LimbState.reaching:
+                MoveTowardsMouse();
+                break;
         }
     }
 
-    private void UpdateTargetPosition()
+    private void UpdateMousePosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
         {
-            targetPosition = hit.point;
+            mousePosition = hit.point;
         }
     }
-
-    private void MoveTowardsTarget()
+    /// <summary>
+    /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse
+    /// </summary>
+    private void MoveTowardsMouse()
     {
-        if(Vector3.Distance(shoulderPosition, targetPosition) >= maxRadius)
+        if(Vector3.Distance(shoulderPosition, mousePosition) >= maxRadius)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                GetPointOnCircle(shoulderPosition, targetPosition, maxRadius),
+                GetPointOnCircle(shoulderPosition, mousePosition, maxRadius),
                 moveSpeed * Time.deltaTime
             );
         }
@@ -72,11 +71,14 @@ public class HandMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                new Vector3(targetPosition.x, targetPosition.y, 0),
+                new Vector3(mousePosition.x, mousePosition.y, 0),
                 moveSpeed * Time.deltaTime
             );
         }
     }
+    /// <summary>
+    /// Moves the hand to the resting position
+    /// </summary>
     private void MoveToRest()
     {
         transform.position = Vector3.MoveTowards(
@@ -85,6 +87,25 @@ public class HandMovement : MonoBehaviour
                 moveSpeed * Time.deltaTime
             );
     }
+    /// <summary>
+    /// Moves the hand to the hold 
+    /// </summary>
+    /// <param name="holdPosition"></param>
+    private void MoveToHold()
+    {
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            holdPosition,
+            moveSpeed * Time.deltaTime
+            );
+    }
+    /// <summary>
+    /// Get the point on a circle in the direction of the second vector, intended to be used for hand positioning
+    /// </summary>
+    /// <param name="center"></param>
+    /// <param name="target"></param>
+    /// <param name="radius"></param>
+    /// <returns></returns>
     private Vector3 GetPointOnCircle(Vector3 center, Vector3 target, float radius)
     {
         Vector3 direction = target - center;

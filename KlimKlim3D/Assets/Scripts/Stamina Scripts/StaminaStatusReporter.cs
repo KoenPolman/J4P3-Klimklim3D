@@ -24,13 +24,14 @@ public class StaminaStatusReporter : MonoBehaviour
         foreach (var limb in climbingManager.allLimbs)
         {
             // Gather the data
+            /*
             string name = limb.gameObject.name;
             float current = limb.currentStamina;
             float max = limb.maxStamina;
             LimbState state = limb.currentState;
-
             // Format: "LeftHand: 85/100 (OnHold)"
             report.AppendLine($"{name}: {current:F1}/{max} | State: {state}");
+            */
         }
 
         Debug.Log(report.ToString());
@@ -44,8 +45,10 @@ public class StaminaStatusReporter : MonoBehaviour
 
         foreach (var limb in climbingManager.allLimbs)
         {
+            /*
             totalMax += limb.maxStamina;
             totalCurrent += limb.currentStamina;
+            */
         }
 
         return (totalCurrent / totalMax) * 100f;
