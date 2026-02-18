@@ -37,6 +37,10 @@ public class HandMovement : MonoBehaviour
                 break;
         }
     }
+    public void SetHold(Vector3 holdHos)
+    {
+        holdPosition = holdHos;
+    }
     /// <summary>
     /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse
     /// </summary>
