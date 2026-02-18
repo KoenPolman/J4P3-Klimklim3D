@@ -4,7 +4,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CanvasGroup))]
 public class StaminaWheelUI : MonoBehaviour
 {
-    public StaminaLimb targetLimb;
+    public LimbInfo limbInfo;
+    public StaminaLimb staminaLimb;
     public Image donutFill;
     
     [Header("Positioning")]
@@ -38,14 +39,14 @@ public class StaminaWheelUI : MonoBehaviour
 
     void Update()
     {
-        if (targetLimb == null || donutFill == null) return;
+        if (staminaLimb == null || donutFill == null) return;
 
         if (followHandPosition) UpdatePosition();
 
-        float ratio = targetLimb.currentStamina / targetLimb.maxStamina;
+        float ratio = staminaLimb.currentStamina / staminaLimb.maxStamina;
 
         // Fade in/out op basis van state
-        float targetAlpha = (targetLimb.currentState == LimbState.OnHold) ? 1f : 0f;
+        float targetAlpha = (limbInfo.GetState() == LimbState.holding) ? 1f : 0f;
         canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
         if (canvasGroup.alpha > 0)
@@ -63,7 +64,7 @@ public class StaminaWheelUI : MonoBehaviour
     void UpdatePosition()
     {
         // Volg de 3D hand in 2D UI space
-        Vector3 screenPos = mainCam.WorldToScreenPoint(targetLimb.transform.position);
+        Vector3 screenPos = mainCam.WorldToScreenPoint(staminaLimb.transform.position);
         targetScreenPos = screenPos + offset;
         rectTransform.position = targetScreenPos;
     }

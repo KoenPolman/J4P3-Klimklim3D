@@ -232,6 +232,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &655281359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4856876339864474356, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
+  m_PrefabInstance: {fileID: 938731761233028749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &655281364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655281359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a990a575d8aa1946a3ff1960349e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaWheelUI
+  targetLimb: {fileID: 0}
+  donutFill: {fileID: 0}
+  followHandPosition: 1
+  offset: {x: 0, y: 100, z: 0}
+  fadeSpeed: 10
+  staminaColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  panicThreshold: 0.25
+  pulseSpeed: 15
+  pulseAmount: 0.1
+  jitterAmount: 5
+--- !u!225 &655281365
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655281359}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1740719247
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +619,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4856876339864474356, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 655281365}
+    - targetCorrespondingSourceObject: {fileID: 4856876339864474356, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 655281364}
   m_SourcePrefab: {fileID: 100100000, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
