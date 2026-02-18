@@ -9,7 +9,6 @@ public class HandMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     private Vector3 holdPosition;
-    private Vector3 mousePosition;
     private Vector3 shoulderPosition;
     private Vector3 restingPosition;
 
@@ -19,9 +18,9 @@ public class HandMovement : MonoBehaviour
     private void Awake()
     {           
         if (mainCamera == null)
+        {
             mainCamera = Camera.main;
-
-        mousePosition = transform.position;
+        }
         shoulderPosition = transform.parent.transform.position;
         restingPosition = transform.parent.GetChild(1).position;
         limbInfo = GetComponent<LimbInfo>();
@@ -30,7 +29,6 @@ public class HandMovement : MonoBehaviour
 
     private void Update()
     {
-        UpdateMousePosition();
         switch (limbInfo.GetState())
         {
             case LimbState.resting:
@@ -44,26 +42,16 @@ public class HandMovement : MonoBehaviour
                 break;
         }
     }
-
-    private void UpdateMousePosition()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
-        {
-            mousePosition = hit.point;
-        }
-    }
     /// <summary>
     /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse
     /// </summary>
     private void MoveTowardsMouse()
     {
-        if(Vector3.Distance(shoulderPosition, mousePosition) >= maxRadius)
+        if(Vector3.Distance(shoulderPosition, playerInput.GetMousePosition()) >= maxRadius)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                GetPointOnCircle(shoulderPosition, mousePosition, maxRadius),
+                GetPointOnCircle(shoulderPosition, playerInput.GetMousePosition(), maxRadius),
                 moveSpeed * Time.deltaTime
             );
         }
@@ -71,7 +59,7 @@ public class HandMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                new Vector3(mousePosition.x, mousePosition.y, 0),
+                new Vector3(playerInput.GetMousePosition().x, playerInput.GetMousePosition().y, 0),
                 moveSpeed * Time.deltaTime
             );
         }
