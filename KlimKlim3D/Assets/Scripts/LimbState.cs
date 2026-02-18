@@ -1,0 +1,1 @@
+public enum LimbState { resting, reaching, holding }

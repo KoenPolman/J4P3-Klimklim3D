@@ -1,43 +1,56 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum LimbState { OffHold, OnHold, Falling }
 
 public class StaminaLimb : MonoBehaviour
 {
+    public LimbType type; 
     public KeyCode interactionKey;
-    public LimbState currentState = LimbState.OffHold;
+    public LimbInfo limbInfo;
     
     [Header("Stamina Settings")]
     public float maxStamina = 100f;
-    public float currentStamina;
-    
-    public UnityEvent OnGrab;
-    public UnityEvent OnRelease;
+    [HideInInspector] public float currentStamina;
 
-    void Start() => currentStamina = maxStamina;
+    [HideInInspector] public UnityEvent OnGrab;
+    [HideInInspector] public UnityEvent OnRelease;
+
+    void Start()
+    {
+        currentStamina = maxStamina;
+        if (limbInfo == null)
+        {
+            limbInfo = GetComponent<LimbInfo>();
+        }
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(interactionKey)) Grab();
-        if (Input.GetKeyUp(interactionKey)) Release();
-
-        if (currentState == LimbState.OnHold)
+        // Alleen handen reageren op input. 
+        // Voeten worden door een extern script (feetsnapping of zoeits) op OnHold gezet.
+        /*
+        if (type == LimbType.Hand)
         {
-            // Manager will handle the actual subtraction logic
+            if (Input.GetKeyDown(interactionKey)) Grab();
+            if (Input.GetKeyUp(interactionKey)) Release();
+        }
+        */
+        if (limbInfo.GetState() == LimbState.holding)
+        {
+            // Als de stamina op is, laat de ledemaat los
             if (currentStamina <= 0) Release();
         }
     }
 
-    void Grab()
+    public void Grab()
     {
-        currentState = LimbState.OnHold;
+        limbInfo.SetState(LimbState.holding);
         OnGrab?.Invoke();
     }
 
     public void Release()
     {
-        currentState = LimbState.OffHold;
+        limbInfo.SetState(LimbState.holding);
         OnRelease?.Invoke();
     }
 }
