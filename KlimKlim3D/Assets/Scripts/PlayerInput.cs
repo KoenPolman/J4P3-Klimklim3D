@@ -26,28 +26,27 @@ public class PlayerInput : MonoBehaviour
     {
         //de manier waarop deze events worden ge called is super ruk maar het werkt, mocht er tijd en zin zijn verander dit -Koen
         //verander dit zodat event alleen ge-invoked word op een verandering in input
-        void Update()
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                leftHandGrab.Invoke();
-            }
-
-            if (Mouse.current.leftButton.wasReleasedThisFrame)
-            {
-                leftHandRelease.Invoke();
-            }
-
-            if (Mouse.current.rightButton.wasPressedThisFrame)
-            {
-                rightHandGrab.Invoke();
-            }
-
-            if (Mouse.current.rightButton.wasReleasedThisFrame)
-            {
-                rightHandRelease.Invoke();
-            }
+            leftHandGrab.Invoke();
         }
+
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            leftHandRelease.Invoke();
+        }
+
+        if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            rightHandGrab.Invoke();
+        }
+
+        if (Mouse.current.rightButton.wasReleasedThisFrame)
+        {
+            rightHandRelease.Invoke();
+        }
+
     }
     public Vector3 GetMousePosition()
     {
