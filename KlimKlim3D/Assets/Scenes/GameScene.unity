@@ -781,19 +781,19 @@ PrefabInstance:
     - target: {fileID: 6887315958220080573, guid: 37fc52bfcdd6d2a40a141e0bceb4b235, type: 3}
       propertyPath: 'allLimbs.Array.data[0]'
       value: 
-      objectReference: {fileID: 8842160456736562707}
+      objectReference: {fileID: 8842160456736562708}
     - target: {fileID: 6887315958220080573, guid: 37fc52bfcdd6d2a40a141e0bceb4b235, type: 3}
       propertyPath: 'allLimbs.Array.data[1]'
       value: 
-      objectReference: {fileID: 7707870527608675984}
+      objectReference: {fileID: 7707870527608675985}
     - target: {fileID: 6887315958220080573, guid: 37fc52bfcdd6d2a40a141e0bceb4b235, type: 3}
       propertyPath: 'allLimbs.Array.data[2]'
       value: 
-      objectReference: {fileID: 2077210136}
+      objectReference: {fileID: 2077210140}
     - target: {fileID: 6887315958220080573, guid: 37fc52bfcdd6d2a40a141e0bceb4b235, type: 3}
       propertyPath: 'allLimbs.Array.data[3]'
       value: 
-      objectReference: {fileID: 1926502304}
+      objectReference: {fileID: 1926502308}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -808,7 +808,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 281360445}
     m_Modifications:
     - target: {fileID: 191612003945312177, guid: 498a59d4ffb830943b545f361e8c2bf2, type: 3}
+      propertyPath: limbInfo
+      value: 
+      objectReference: {fileID: 8842160456736562708}
+    - target: {fileID: 191612003945312177, guid: 498a59d4ffb830943b545f361e8c2bf2, type: 3}
       propertyPath: targetLimb
+      value: 
+      objectReference: {fileID: 8842160456736562707}
+    - target: {fileID: 191612003945312177, guid: 498a59d4ffb830943b545f361e8c2bf2, type: 3}
+      propertyPath: staminaLimb
       value: 
       objectReference: {fileID: 8842160456736562707}
     - target: {fileID: 1940574398520791597, guid: 498a59d4ffb830943b545f361e8c2bf2, type: 3}
@@ -1086,7 +1094,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7103647734077999191, guid: 7883dd5a2f73d2d42af29651118119cb, type: 3}
+      propertyPath: limbInfo
+      value: 
+      objectReference: {fileID: 7707870527608675985}
+    - target: {fileID: 7103647734077999191, guid: 7883dd5a2f73d2d42af29651118119cb, type: 3}
       propertyPath: targetLimb
+      value: 
+      objectReference: {fileID: 7707870527608675984}
+    - target: {fileID: 7103647734077999191, guid: 7883dd5a2f73d2d42af29651118119cb, type: 3}
+      propertyPath: staminaLimb
       value: 
       objectReference: {fileID: 7707870527608675984}
     - target: {fileID: 7690882333305520534, guid: 7883dd5a2f73d2d42af29651118119cb, type: 3}
@@ -1116,6 +1132,7 @@ GameObject:
   - component: {fileID: 1926502306}
   - component: {fileID: 1926502305}
   - component: {fileID: 1926502304}
+  - component: {fileID: 1926502308}
   m_Layer: 0
   m_Name: FootR
   m_TagString: Untagged
@@ -1152,7 +1169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
   type: 1
   interactionKey: 0
-  currentState: 1
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -1239,6 +1256,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926502302}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1926502308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926502302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
 --- !u!1 &2077210134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1282,7 @@ GameObject:
   - component: {fileID: 2077210138}
   - component: {fileID: 2077210137}
   - component: {fileID: 2077210136}
+  - component: {fileID: 2077210140}
   m_Layer: 0
   m_Name: FootL
   m_TagString: Untagged
@@ -1288,7 +1319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
   type: 1
   interactionKey: 0
-  currentState: 1
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -1375,6 +1406,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077210134}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2077210140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077210134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
 --- !u!4 &36767592552448643
 Transform:
   m_ObjectHideFlags: 0
@@ -1697,6 +1741,7 @@ GameObject:
   - component: {fileID: 2610971194834265751}
   - component: {fileID: 7707870527608675983}
   - component: {fileID: 7707870527608675984}
+  - component: {fileID: 7707870527608675985}
   m_Layer: 0
   m_Name: HandR
   m_TagString: Untagged
@@ -1873,7 +1918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  handType: 0
   maxRadius: 2
   mainCamera: {fileID: 0}
   groundLayer:
@@ -1892,7 +1936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  handType: 1
   maxRadius: 2
   mainCamera: {fileID: 0}
   groundLayer:
@@ -1913,7 +1956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
   type: 0
   interactionKey: 324
-  currentState: 0
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -1922,6 +1965,19 @@ MonoBehaviour:
   OnRelease:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7707870527608675985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856876340215639649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
 --- !u!33 &8059192937866556225
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1978,6 +2034,7 @@ GameObject:
   - component: {fileID: 2367135577920216356}
   - component: {fileID: 6979590489479201421}
   - component: {fileID: 8842160456736562707}
+  - component: {fileID: 8842160456736562708}
   m_Layer: 0
   m_Name: HandL
   m_TagString: Untagged
@@ -1999,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
   type: 0
   interactionKey: 323
-  currentState: 0
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -2008,6 +2065,19 @@ MonoBehaviour:
   OnRelease:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8842160456736562708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842160456736562706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
+  type: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
