@@ -24,9 +24,6 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //de manier waarop deze events worden ge called is super ruk maar het werkt, mocht er tijd en zin zijn verander dit -Koen
-        //verander dit zodat event alleen ge-invoked word op een verandering in input
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             leftHandGrab.Invoke();

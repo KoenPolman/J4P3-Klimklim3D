@@ -249,7 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a990a575d8aa1946a3ff1960349e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaWheelUI
-  targetLimb: {fileID: 0}
+  limbInfo: {fileID: 0}
+  staminaLimb: {fileID: 0}
   donutFill: {fileID: 0}
   followHandPosition: 1
   offset: {x: 0, y: 100, z: 0}
@@ -572,6 +573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2124959933900897700, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3881880693263165239, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
       propertyPath: m_Name
       value: Player
