@@ -4,7 +4,6 @@ using UnityEngine;
 public class HandMovement : MonoBehaviour
 {
     [SerializeField] float maxRadius;
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float moveSpeed = 10f;
 
@@ -17,10 +16,6 @@ public class HandMovement : MonoBehaviour
 
     private void Awake()
     {           
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main;
-        }
         shoulderPosition = transform.parent.transform.position;
         restingPosition = transform.parent.GetChild(1).position;
         limbInfo = GetComponent<LimbInfo>();
