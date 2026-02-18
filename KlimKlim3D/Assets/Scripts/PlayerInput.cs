@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [HideInInspector] public UnityEvent leftHandGrab;
     [HideInInspector] public UnityEvent rightHandGrab;
     [HideInInspector] public UnityEvent leftHandRelease;
     [HideInInspector] public UnityEvent rightHandRelease;
+    private Camera mainCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
