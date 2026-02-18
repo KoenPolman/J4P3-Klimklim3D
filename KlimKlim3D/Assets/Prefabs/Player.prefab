@@ -240,6 +240,10 @@ MonoBehaviour:
   rate3Limbs: 10
   rate2Limbs: 15
   rate1Limb: 25
+  activateChalkKey: 101
+  chalkInventory: 0
+  holdsRemaining: 0
+  chalkStaminaMultiplier: 0.5
 --- !u!114 &2124959933900897700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +259,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   leftHandGrab:
     m_PersistentCalls:
       m_Calls: []
