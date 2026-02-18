@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
-  type: 0
+  type: 3
 --- !u!1 &1838619379601667144
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxRadius: 2
-  mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -743,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
-  type: 0
+  type: 1
 --- !u!114 &1191314632203722978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7a4e893dcfd541bbd97bb056f7fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldGrabManager
+  checkingDistance: 1
 --- !u!1 &5438356195133497986
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac041f04d54f4de4f86ea9f67a721a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
-  type: 0
+  type: 2
 --- !u!1 &6116081270662032547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxRadius: 2
-  mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1205,3 +1204,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7a4e893dcfd541bbd97bb056f7fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldGrabManager
+  checkingDistance: 1
