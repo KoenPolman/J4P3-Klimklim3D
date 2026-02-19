@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
+using UnityEngine.InputSystem;
 
 public class CoreMovement : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class CoreMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //voeg check toe voor of dat bewegen wel toe is gestaan
         transform.position = Vector3.MoveTowards(
                 transform.position,
                 GetPositionBetweenHands(),
@@ -39,6 +42,6 @@ public class CoreMovement : MonoBehaviour
     }
     private Vector3 GetPositionBetweenHands()
     {
-        return (leftHand.position - rightHand.position)/2f;
+        return (leftHand.position + rightHand.position) / 2f - new Vector3(0,0.75f,0);
     }
 }
