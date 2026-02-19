@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
     [HideInInspector] public UnityEvent leftHandGrab;
     [HideInInspector] public UnityEvent rightHandGrab;
     [HideInInspector] public UnityEvent leftHandRelease;
     [HideInInspector] public UnityEvent rightHandRelease;
+    private Camera mainCamera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,9 +24,6 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //de manier waarop deze events worden ge called is super ruk maar het werkt, mocht er tijd en zin zijn verander dit -Koen
-        //verander dit zodat event alleen ge-invoked word op een verandering in input
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             leftHandGrab.Invoke();

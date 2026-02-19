@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class StaminaLimb : MonoBehaviour
 {
-    public LimbType type; 
     public KeyCode interactionKey;
     public LimbInfo limbInfo;
     
@@ -28,13 +27,11 @@ public class StaminaLimb : MonoBehaviour
     {
         // Alleen handen reageren op input. 
         // Voeten worden door een extern script (feetsnapping of zoeits) op OnHold gezet.
-        /*
-        if (type == LimbType.Hand)
+        if (limbInfo.GetTypeStrict() == LimbType.LeftHand || limbInfo.GetTypeStrict() == LimbType.RightHand)
         {
             if (Input.GetKeyDown(interactionKey)) Grab();
             if (Input.GetKeyUp(interactionKey)) Release();
         }
-        */
         if (limbInfo.GetState() == LimbState.holding)
         {
             // Als de stamina op is, laat de ledemaat los
@@ -50,7 +47,7 @@ public class StaminaLimb : MonoBehaviour
 
     public void Release()
     {
-        limbInfo.SetState(LimbState.holding);
+        limbInfo.SetState(LimbState.resting);
         OnRelease?.Invoke();
     }
 }
