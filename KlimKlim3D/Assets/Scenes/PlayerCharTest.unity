@@ -194,7 +194,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4143603609771749336, guid: d8b238fa93f3998b69c4adeea01e8fa2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 631695703}
   m_SourcePrefab: {fileID: 100100000, guid: d8b238fa93f3998b69c4adeea01e8fa2, type: 3}
 --- !u!1 &127508648
 GameObject:
@@ -720,6 +723,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b238fa93f3998b69c4adeea01e8fa2, type: 3}
+--- !u!1 &631695697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4143603609771749336, guid: d8b238fa93f3998b69c4adeea01e8fa2, type: 3}
+  m_PrefabInstance: {fileID: 21302354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &631695703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631695697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
+  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
+  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
+  sittingPointOverride: {fileID: 0}
+  decideOnStart: 1
 --- !u!1 &655281359 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4856876339864474356, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
