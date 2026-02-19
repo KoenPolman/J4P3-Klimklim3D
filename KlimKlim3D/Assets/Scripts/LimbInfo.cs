@@ -27,4 +27,12 @@ public class LimbInfo : MonoBehaviour
 
     }
     */
+    /// <summary>
+    /// check if limb is at maximum range, not final
+    /// </summary>
+    /// <returns></returns>
+    public bool IsAtMaxRange()
+    {
+        return false;
+    }
 }

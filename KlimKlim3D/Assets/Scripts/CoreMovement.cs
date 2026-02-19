@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CoreMovement : MonoBehaviour
 {
-    
     void Start()
     {
         
