@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 599147550396520802}
   - component: {fileID: 6848697484073703282}
   - component: {fileID: 3390584880875225541}
-  - component: {fileID: 4543823525588994642}
+  - component: {fileID: 4898181539384168058}
   m_Layer: 0
-  m_Name: FootR
+  m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,29 +136,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
   type: 3
---- !u!114 &4543823525588994642
-MonoBehaviour:
+--- !u!65 &4898181539384168058
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702853159214545069}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
-  type: 3
-  interactionKey: 32
-  limbInfo: {fileID: 3390584880875225541}
-  maxStamina: 100
-  currentStamina: 0
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRelease:
-    m_PersistentCalls:
-      m_Calls: []
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1838619379601667144
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +356,6 @@ GameObject:
   - component: {fileID: 4255235394931480690}
   - component: {fileID: 2097981428589109990}
   - component: {fileID: 2124959933900897700}
-  - component: {fileID: 2621038247438507349}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -498,6 +495,8 @@ MonoBehaviour:
   rate3Limbs: 10
   rate2Limbs: 15
   rate1Limb: 25
+  activateChalkKey: 101
+  chalkInventory: 0
   holdsRemaining: 0
   chalkStaminaMultiplier: 0.5
 --- !u!114 &2124959933900897700
@@ -527,21 +526,6 @@ MonoBehaviour:
   rightHandRelease:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2621038247438507349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3881880693263165239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41140e31675d5324091c4a37064f346b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupManager
-  climbingManager: {fileID: 2097981428589109990}
-  chalkKey: 101
-  chalkInventory: 0
 --- !u!1 &4006465917859309735
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,9 +633,9 @@ GameObject:
   - component: {fileID: 6046496120029839889}
   - component: {fileID: 3913694169664883893}
   - component: {fileID: 1191314632203722978}
-  - component: {fileID: 6801362745852853874}
+  - component: {fileID: 2978900129674755436}
   m_Layer: 0
-  m_Name: HandR
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,7 +726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxRadius: 2
-  mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -759,9 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
-  type: 1
-  interactionKey: 324
-  limbInfo: {fileID: 3913694169664883893}
+  interactionKey: 0
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -795,16 +777,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7a4e893dcfd541bbd97bb056f7fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldGrabManager
---- !u!70 &6801362745852853874
-CapsuleCollider2D:
+  checkingDistance: 1
+--- !u!65 &2978900129674755436
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4856876339864474356}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -813,25 +793,12 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.00000011920929}
-  m_Size: {x: 0.99999994, y: 0.99999994}
-  m_Direction: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5438356195133497986
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,9 +842,9 @@ GameObject:
   - component: {fileID: 5301982920374385203}
   - component: {fileID: 6095300481110305125}
   - component: {fileID: 1198993339348292937}
-  - component: {fileID: 1256439507204042617}
+  - component: {fileID: 7383682816059310252}
   m_Layer: 0
-  m_Name: FootL
+  m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,29 +935,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LimbInfo
   type: 2
---- !u!114 &1256439507204042617
-MonoBehaviour:
+--- !u!65 &7383682816059310252
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5885118387036490012}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
-  type: 2
-  interactionKey: 304
-  limbInfo: {fileID: 1198993339348292937}
-  maxStamina: 100
-  currentStamina: 0
-  OnGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRelease:
-    m_PersistentCalls:
-      m_Calls: []
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6116081270662032547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,9 +1125,9 @@ GameObject:
   - component: {fileID: 592328491195913192}
   - component: {fileID: 331208823402579835}
   - component: {fileID: 8448249354980829196}
-  - component: {fileID: 2810223237326706576}
+  - component: {fileID: 4934740231206613231}
   m_Layer: 0
-  m_Name: HandL
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1253,7 +1218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxRadius: 2
-  mainCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1283,9 +1247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
-  type: 0
-  interactionKey: 323
-  limbInfo: {fileID: 592328491195913192}
+  interactionKey: 0
+  limbInfo: {fileID: 0}
   maxStamina: 100
   currentStamina: 0
   OnGrab:
@@ -1306,16 +1269,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7a4e893dcfd541bbd97bb056f7fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoldGrabManager
---- !u!70 &2810223237326706576
-CapsuleCollider2D:
+  checkingDistance: 1
+--- !u!65 &4934740231206613231
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8842160456049861255}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1324,22 +1285,9 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.00000011920929}
-  m_Size: {x: 0.99999994, y: 0.99999994}
-  m_Direction: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
