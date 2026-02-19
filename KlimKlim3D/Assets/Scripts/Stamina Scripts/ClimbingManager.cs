@@ -10,17 +10,14 @@ public class ClimbingManager : MonoBehaviour
     public float rate2Limbs = 15f; 
     public float rate1Limb = 25f;  
 
-    [Header("Chalk System")]
-    public KeyCode activateChalkKey = KeyCode.E;
-    public int chalkInventory = 0;        // Hoeveelheid 'beurten' van 8 holds
-    public int holdsRemaining = 0;        // Resterende holds voor huidige beurt
-    public float chalkStaminaMultiplier = 0.5f; // De reductie (halvering)
+    [Header("Active Effects")]
+    public int holdsRemaining = 0; 
+    public float chalkStaminaMultiplier = 0.5f;
     
     private float Rate4Limbs => -rate1Limb; 
 
     void Start()
     {
-        // Abonneer op de OnGrab events van de handen om holds te tellen
         foreach (var limb in allLimbs)
         {
             StaminaLimb stamina = limb.GetComponent<StaminaLimb>();
@@ -31,16 +28,14 @@ public class ClimbingManager : MonoBehaviour
         }
     }
 
-    public void AddChalkToInventory(int amount) => chalkInventory += amount;
+    // Called by PickupManager
+    public void ActivateChalkEffect(int holds)
+    {
+        holdsRemaining = holds;
+    }
 
     void Update()
     {
-        // Activatie via E
-        if (Input.GetKeyDown(activateChalkKey) && chalkInventory > 0 && holdsRemaining <= 0)
-        {
-            UseChalkCharge();
-        }
-
         int activeCount = 0;
         int feetActive = 0;
 
@@ -53,13 +48,7 @@ public class ClimbingManager : MonoBehaviour
             }
         }
 
-        float footMultiplier = feetActive switch {
-            2 => 0.5f,
-            1 => 1.0f,
-            0 => 2.5f,
-            _ => 1.0f
-        };
-
+        float footMultiplier = GetFootMultiplier(feetActive);
         float baseRate = GetRate(activeCount);
 
         foreach (var limb in allLimbs)
@@ -68,52 +57,31 @@ public class ClimbingManager : MonoBehaviour
             {
                 float finalRate = baseRate;
 
-                // Pas multipliers toe op handen
-                if ((limb.GetTypeStrict() == LimbType.LeftHand || limb.GetTypeStrict() == LimbType.RightHand) && baseRate > 0)
+                if (IsHand(limb.GetTypeStrict()) && baseRate > 0)
                 {
                     finalRate *= footMultiplier;
 
-                    // Pas Chalk toe als het effect actief is
-                    if (holdsRemaining > 0)
-                    {
-                        finalRate *= chalkStaminaMultiplier;
-                    }
+                    // Apply Chalk effect if active
+                    if (holdsRemaining > 0) finalRate *= chalkStaminaMultiplier;
                 }
 
                 StaminaLimb staminaLimb = limb.GetComponent<StaminaLimb>();
                 staminaLimb.currentStamina -= finalRate * Time.deltaTime;
                 staminaLimb.currentStamina = Mathf.Clamp(staminaLimb.currentStamina, 0, staminaLimb.maxStamina);
             }
-            
-            if (activeCount == 0) { /* Val logica */ }
         }
     }
 
-    void UseChalkCharge()
-    {
-        chalkInventory--;
-        holdsRemaining = 8;
-        Debug.Log("Chalk geactiveerd! Effect werkt voor 8 holds.");
-    }
-
-    void OnHandGrabbed()
+    private void OnHandGrabbed()
     {
         if (holdsRemaining > 0)
         {
             holdsRemaining--;
-            if (holdsRemaining <= 0) Debug.Log("Chalk effect uitgewerkt.");
         }
     }
 
-    float GetRate(int count)
-    {
-        return count switch
-        {
-            4 => Rate4Limbs,
-            3 => rate3Limbs,
-            2 => rate2Limbs,
-            1 => rate1Limb,
-            _ => 0
-        };
-    }
+    float GetFootMultiplier(int feet) => feet switch { 2 => 0.5f, 1 => 1.0f, 0 => 2.5f, _ => 1.0f };
+    bool IsHand(LimbType t) => t == LimbType.LeftHand || t == LimbType.RightHand;
+
+    float GetRate(int count) => count switch { 4 => Rate4Limbs, 3 => rate3Limbs, 2 => rate2Limbs, 1 => rate1Limb, _ => 0 };
 }
