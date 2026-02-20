@@ -21,6 +21,11 @@ public class Hold : MonoBehaviour
         return interactionCollider.bounds.center;
     }
 
+    public bool GetHoldAvailability(LimbType type)
+    {
+        return true
+    }
+
     private void Awake()
     {
         //get mesh filter

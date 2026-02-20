@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class HoldGrabManager : MonoBehaviour
 {
     [SerializeField] float checkingDistance;
