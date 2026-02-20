@@ -7,17 +7,17 @@ public class HandMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float moveSpeed = 10f;
 
-    private Vector3 holdPosition;
-    private Vector3 shoulderPosition;
-    private Vector3 restingPosition;
+    private Transform hold;
+    private Transform shoulder;
+    private Transform resting;
 
     private LimbInfo limbInfo;
     private PlayerInput playerInput;
 
     private void Awake()
     {           
-        shoulderPosition = transform.parent.transform.position;
-        restingPosition = transform.parent.GetChild(1).position;
+        shoulder = transform.parent.transform;
+        resting = transform.parent.GetChild(1);
         limbInfo = GetComponent<LimbInfo>();
         playerInput = transform.parent.parent.GetComponent<PlayerInput>();
     }
@@ -37,20 +37,20 @@ public class HandMovement : MonoBehaviour
                 break;
         }
     }
-    public void SetHold(Vector3 holdHos)
+    public void SetHold(Transform newHold)
     {
-        holdPosition = holdHos;
+        hold = newHold;
     }
     /// <summary>
     /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse
     /// </summary>
     private void MoveTowardsMouse()
     {
-        if(Vector3.Distance(shoulderPosition, playerInput.GetMousePosition()) >= maxRadius)
+        if(Vector3.Distance(shoulder.position, playerInput.GetMousePosition()) >= maxRadius)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                GetPointOnCircle(shoulderPosition, playerInput.GetMousePosition(), maxRadius),
+                GetPointOnCircle(shoulder.position, playerInput.GetMousePosition(), maxRadius),
                 moveSpeed * Time.deltaTime
             );
         }
@@ -70,7 +70,7 @@ public class HandMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(
                 transform.position,
-                restingPosition,
+                resting.position,
                 moveSpeed * Time.deltaTime
             );
     }
@@ -82,7 +82,7 @@ public class HandMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(
             transform.position,
-            holdPosition,
+            hold.position,
             moveSpeed * Time.deltaTime
             );
     }
