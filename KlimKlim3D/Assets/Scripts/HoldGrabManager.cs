@@ -33,6 +33,7 @@ public class HoldGrabManager : MonoBehaviour
     }
     private void GrabHandle()
     {
+        //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, checkingDistance))

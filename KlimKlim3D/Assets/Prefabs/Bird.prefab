@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdController
   sprite: {fileID: 0}
-  state: 2
+  _state: 0
 --- !u!54 &2476846718848524873
 Rigidbody:
   m_ObjectHideFlags: 0
