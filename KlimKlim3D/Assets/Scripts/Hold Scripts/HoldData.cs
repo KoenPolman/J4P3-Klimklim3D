@@ -31,5 +31,4 @@ public class HoldData : ScriptableObject
         hand,
         foot,
     }
-    
 }
