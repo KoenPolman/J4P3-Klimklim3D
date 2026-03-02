@@ -23,7 +23,7 @@ public class Hold : MonoBehaviour
 
     public bool GetHoldAvailability(LimbType type)
     {
-        return true
+        return true;
     }
 
     private void Awake()
