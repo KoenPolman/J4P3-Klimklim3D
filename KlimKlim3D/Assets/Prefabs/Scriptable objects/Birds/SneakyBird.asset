@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07284d2f69b9c5a46ad423298ad75f2f, type: 3}
   m_Name: SneakyBird
   m_EditorClassIdentifier: Assembly-CSharp::BirdConfig
-  spawnChancePercent: 100
-  spawnSittingChancePercent: 0
+  spawnChance: 75
+  spawnSittingChance: 50
   offscreenPadding: 2
   approachSpeed: 6
   sittingSnapDistance: 0.2
-  circleBeforeFleeChancePercent: 50
+  circleHoldChance: 50
   circleDuration: 1.25
   circleRadius: 1.2
   circleAngularSpeedDeg: 360

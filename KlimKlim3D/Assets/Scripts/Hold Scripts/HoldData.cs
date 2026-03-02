@@ -27,9 +27,8 @@ public class HoldData : ScriptableObject
     
     public enum HoldType
     {
+        both,
         hand,
         foot,
-        both
     }
-    
 }

@@ -1,8 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-
 public class HoldGrabManager : MonoBehaviour
 {
     [SerializeField] float checkingDistance;
@@ -33,6 +29,7 @@ public class HoldGrabManager : MonoBehaviour
     }
     private void GrabHandle()
     {
+        //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, checkingDistance))
@@ -40,7 +37,7 @@ public class HoldGrabManager : MonoBehaviour
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
                 limbInfo.SetState(LimbState.holding);
-                GetComponent<HandMovement>().SetHold(hit.transform.position);
+                GetComponent<HandMovement>().SetHold(hit.transform);
                 return;
             }
         }
