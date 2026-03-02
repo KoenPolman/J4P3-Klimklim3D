@@ -12,8 +12,12 @@ public class ChalkPickup : MonoBehaviour
         if (manager != null)
         {
             manager.AddChalk(usesToGive);
+            Debug.Log($"[ChalkPickup] Collected chalk pickup. Granted uses: {usesToGive}.");
             Destroy(gameObject);
-            Debug.Log("Chalk picked up!");
+        }
+        else
+        {
+            Debug.LogWarning("[ChalkPickup] Triggered by an object without a PickupManager in its parent hierarchy.");
         }
     }
 }
