@@ -34,6 +34,8 @@ public class HoldGrabManager : MonoBehaviour
         //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
+        Debug.DrawRay(transform.position, transform.forward * checkingDistance, Color.red, 1.0f);
+
         if (Physics.Raycast(transform.position, transform.forward, out hit, checkingDistance))
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
