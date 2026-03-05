@@ -9,7 +9,7 @@ public class HandMovement : MonoBehaviour
 
     private Transform hold;
     private Transform shoulder;
-    private Transform resting;
+    [SerializeField] Transform resting;
 
     private LimbInfo limbInfo;
     private PlayerInput playerInput;
@@ -17,7 +17,10 @@ public class HandMovement : MonoBehaviour
     private void Awake()
     {           
         shoulder = transform.parent.transform;
-        resting = transform.parent.GetChild(1);
+        if (resting == null)
+        {
+            resting = transform.parent.GetChild(1);
+        }
         limbInfo = GetComponent<LimbInfo>();
         playerInput = transform.parent.parent.GetComponent<PlayerInput>();
     }

@@ -22,8 +22,10 @@ public class HoldGrabManager : MonoBehaviour
                 playerInput.rightHandRelease.AddListener(Reach);
                 break;
             case LimbType.LeftFoot:
+                //nothing
                 break;
             case LimbType.RightFoot:
+                //nothing
                 break;
         }
     }
