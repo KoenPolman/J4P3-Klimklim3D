@@ -6,14 +6,18 @@ public class ChalkPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Zoek de ClimbingManager via de collider die de trigger raakt
-        ClimbingManager manager = other.GetComponentInParent<ClimbingManager>();
+        // Try to find PickupManager on the parent (Player)
+        PickupManager manager = other.GetComponentInParent<PickupManager>();
         
         if (manager != null)
         {
-            manager.AddChalkToInventory(usesToGive);
-            Destroy(gameObject); // De pickup is eenmalig
-            Debug.Log($"Chalk opgepakt! +{usesToGive} uses.");
+            manager.AddChalk(usesToGive);
+            Debug.Log($"[ChalkPickup] Collected chalk pickup. Granted uses: {usesToGive}.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("[ChalkPickup] Triggered by an object without a PickupManager in its parent hierarchy.");
         }
     }
 }
