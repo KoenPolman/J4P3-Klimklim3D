@@ -44,6 +44,9 @@ GameObject:
   - component: {fileID: 6848697484073703282}
   - component: {fileID: 3390584880875225541}
   - component: {fileID: 4898181539384168058}
+  - component: {fileID: 3751472891433170233}
+  - component: {fileID: 444125549538470095}
+  - component: {fileID: 7350689555517991191}
   m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
@@ -157,6 +160,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3751472891433170233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702853159214545069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandMovement
+  maxRadius: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  moveSpeed: 10
+  resting: {fileID: 0}
+--- !u!114 &444125549538470095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702853159214545069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da352a3bf6491c4db65208702c75e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootPlacement
+--- !u!114 &7350689555517991191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702853159214545069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
+  interactionKey: 0
+  limbInfo: {fileID: 3390584880875225541}
+  maxStamina: 100
+  currentStamina: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1838619379601667144
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +811,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+  resting: {fileID: 0}
 --- !u!114 &6046496120029839889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +926,8 @@ GameObject:
   - component: {fileID: 1198993339348292937}
   - component: {fileID: 7383682816059310252}
   - component: {fileID: 5909446055266689602}
+  - component: {fileID: 1627933418578670818}
+  - component: {fileID: 4373452848508465582}
   m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
@@ -995,11 +1053,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280eb92e5bc7034eb71b2ce649712a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandMovement
-  maxRadius: 0
+  maxRadius: 2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   moveSpeed: 10
+  resting: {fileID: 0}
+--- !u!114 &1627933418578670818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885118387036490012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da352a3bf6491c4db65208702c75e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootPlacement
+--- !u!114 &4373452848508465582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885118387036490012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884b2b250cb3f14eb7c5eae53f8c44c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaLimb
+  interactionKey: 0
+  limbInfo: {fileID: 1198993339348292937}
+  maxStamina: 100
+  currentStamina: 0
+  OnGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRelease:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6116081270662032547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,6 +1359,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+  resting: {fileID: 0}
 --- !u!114 &592328491195913192
 MonoBehaviour:
   m_ObjectHideFlags: 0
