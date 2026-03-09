@@ -22,13 +22,7 @@ public class HoldData : ScriptableObject
     /// </summary>
     [Range(0,5)]
     public float staminaDrainMultiplier = 1f;
+    public int limbCapacity = 2;
     
     public bool inUse = false;
-    
-    public enum HoldType
-    {
-        both,
-        hand,
-        foot,
-    }
 }

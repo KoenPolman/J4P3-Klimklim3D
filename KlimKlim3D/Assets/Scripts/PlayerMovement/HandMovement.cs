@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-//dit script moet gerefactord worden want het doet te veel -Koen
 public class HandMovement : MonoBehaviour
 {
     [SerializeField] float maxRadius;
