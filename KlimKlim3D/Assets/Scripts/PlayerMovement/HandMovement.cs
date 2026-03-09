@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-//dit script moet gerefactord worden want het doet te veel -Koen
 public class HandMovement : MonoBehaviour
 {
     [SerializeField] float maxRadius;
@@ -9,7 +8,7 @@ public class HandMovement : MonoBehaviour
 
     private Transform hold;
     private Transform shoulder;
-    private Transform resting;
+    [SerializeField] Transform resting;
 
     private LimbInfo limbInfo;
     private PlayerInput playerInput;
@@ -17,7 +16,10 @@ public class HandMovement : MonoBehaviour
     private void Awake()
     {           
         shoulder = transform.parent.transform;
-        resting = transform.parent.GetChild(1);
+        if (resting == null)
+        {
+            resting = transform.parent.GetChild(1);
+        }
         limbInfo = GetComponent<LimbInfo>();
         playerInput = transform.parent.parent.GetComponent<PlayerInput>();
     }
@@ -40,6 +42,14 @@ public class HandMovement : MonoBehaviour
     public void SetHold(Transform newHold)
     {
         hold = newHold;
+    }
+    public Transform GetRestingPosition()
+    {
+        return resting;
+    }
+    public float GetMaxRadius()
+    {
+        return maxRadius;
     }
     /// <summary>
     /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse

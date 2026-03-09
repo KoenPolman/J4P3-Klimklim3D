@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance;
-using UnityEngine.InputSystem;
 
 public class CoreMovement : MonoBehaviour
 {

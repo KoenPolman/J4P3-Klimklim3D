@@ -2,13 +2,15 @@ using UnityEngine;
 public class HoldGrabManager : MonoBehaviour
 {
     [SerializeField] float checkingDistance;
-
-    private PlayerInput playerInput;
+    [SerializeField] PlayerInput playerInput;
     private LimbInfo limbInfo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerInput = transform.parent.parent.GetComponent<PlayerInput>();
+        if (playerInput == null)
+        {
+            playerInput = transform.parent.parent.GetComponent<PlayerInput>();
+        }
         limbInfo = GetComponent<LimbInfo>();
 
         switch (limbInfo.GetTypeStrict())
@@ -22,8 +24,10 @@ public class HoldGrabManager : MonoBehaviour
                 playerInput.rightHandRelease.AddListener(Reach);
                 break;
             case LimbType.LeftFoot:
+                //nothing
                 break;
             case LimbType.RightFoot:
+                //nothing
                 break;
         }
     }
