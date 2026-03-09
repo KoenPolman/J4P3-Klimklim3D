@@ -35,7 +35,6 @@ public class FootPlacement : MonoBehaviour
             limbInfo.SetState(LimbState.holding);
             // A hold reference has to be passed on to the hand/limb movement script, i am well aware that this is not the neatest solution so this might be changed in the future but for now please dont touch -Koen
             handMovement.SetHold(targetHold.transform);
-            // Notify the climbing manager that the foot is standing on a hold
         }
         else
         {
