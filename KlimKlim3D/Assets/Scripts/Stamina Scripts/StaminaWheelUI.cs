@@ -8,20 +8,20 @@ public class StaminaWheelUI : MonoBehaviour
     public StaminaLimb staminaLimb;
     public Image donutFill;
     
-    [Header("Positioning")]
-    public bool followHandPosition = true;
+    // Positioning
     public Vector3 offset = new Vector3(0, 100, 0);
+   
+    // Visual Effects
+    private float fadeSpeed = 10f;
+    private Gradient staminaColor; 
 
-    [Header("Visual Tweaks")]
-    public float fadeSpeed = 10f;
-    public Gradient staminaColor; 
+    // Panic effects parameters
+    private float panicThreshold = 0.25f; 
+    private float pulseSpeed = 15f;
+    private float pulseAmount = 0.1f;
+    private float jitterAmount = 5f; 
     
-    [Header("Panic Settings")]
-    public float panicThreshold = 0.25f; 
-    public float pulseSpeed = 15f;
-    public float pulseAmount = 0.1f;
-    public float jitterAmount = 5f; // Kracht van het trillen
-
+    // Internal references
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     private Vector3 originalScale;
@@ -41,11 +41,10 @@ public class StaminaWheelUI : MonoBehaviour
     {
         if (staminaLimb == null || donutFill == null) return;
 
-        if (followHandPosition) UpdatePosition();
+        UpdatePosition();
 
         float ratio = staminaLimb.currentStamina / staminaLimb.maxStamina;
 
-        // Fade in/out op basis van state
         float targetAlpha = (limbInfo.GetState() == LimbState.holding) ? 1f : 0f;
         canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
@@ -61,23 +60,24 @@ public class StaminaWheelUI : MonoBehaviour
         }
     }
 
+    // Position the UI above the hand
     void UpdatePosition()
     {
-        // Volg de 3D hand in 2D UI space
         Vector3 screenPos = mainCam.WorldToScreenPoint(staminaLimb.transform.position);
         targetScreenPos = screenPos + offset;
         rectTransform.position = targetScreenPos;
     }
 
+    // Visual effects when stamina is low
     void HandlePanicEffects(float ratio)
     {
         if (ratio <= panicThreshold)
-        {
-            // Hartslag Pulse
+        {  
+            // Pulse
             float pulse = 1f + Mathf.Sin(Time.time * pulseSpeed) * pulseAmount;
             transform.localScale = originalScale * pulse;
 
-            // Paniek Trilling (Jitter)
+            // Jitter
             Vector3 shake = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0) * jitterAmount;
             rectTransform.position = targetScreenPos + shake;
         }
@@ -87,6 +87,7 @@ public class StaminaWheelUI : MonoBehaviour
         }
     }
 
+    // Smoothly return to original scale and position
     void ResetVisuals()
     {
         transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * 5f);
