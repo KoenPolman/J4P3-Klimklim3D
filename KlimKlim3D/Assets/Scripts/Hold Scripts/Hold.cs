@@ -1,5 +1,5 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
@@ -23,7 +23,23 @@ public class Hold : MonoBehaviour
 
     public bool GetHoldAvailability(LimbType type)
     {
-        return true;
+        if (IsAtLimbCapacity())
+        {
+            return false;
+        }
+        if (holdData.holdType == HoldType.both)
+        {
+            return true;
+        }
+        else if (holdData.holdType == HoldType.hand && (type == LimbType.LeftHand || type == LimbType.RightHand))
+        {
+            return true;
+        }
+        else if (holdData.holdType == HoldType.foot && (type == LimbType.LeftFoot || type == LimbType.RightFoot))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void Awake()
@@ -46,5 +62,9 @@ public class Hold : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
+    }
+    private bool IsAtLimbCapacity()
+    {
+        return false;
     }
 }
