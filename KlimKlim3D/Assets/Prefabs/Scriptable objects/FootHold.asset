@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FootHold
   m_EditorClassIdentifier: Assembly-CSharp::HoldData
   difficulty: 1
-  holdType: 1
+  holdType: 2
   staminaDrainMultiplier: 1
+  limbCapacity: 2
   inUse: 0

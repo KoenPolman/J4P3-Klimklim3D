@@ -7,10 +7,8 @@ public class HoldGrabManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (playerInput == null)
-        {
-            playerInput = transform.parent.parent.GetComponent<PlayerInput>();
-        }
+        playerInput = PlayerInput.Instance;
+        
         limbInfo = GetComponent<LimbInfo>();
 
         switch (limbInfo.GetTypeStrict())

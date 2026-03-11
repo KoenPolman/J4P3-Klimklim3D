@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
@@ -27,6 +28,7 @@ public class Hold : MonoBehaviour
         {
             return false;
         }
+
         if (holdData.holdType == HoldType.both)
         {
             return true;
@@ -39,6 +41,7 @@ public class Hold : MonoBehaviour
         {
             return true;
         }
+
         return false;
     }
 
@@ -60,9 +63,25 @@ public class Hold : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.cyan;
+        switch (GetHoldData().holdType)
+        {
+            case HoldType.both:
+                Gizmos.color = Color.yellow;
+                break;
+            case HoldType.hand:
+                Gizmos.color = Color.red;
+                break;
+            case HoldType.foot:
+                Gizmos.color = Color.green;
+                break;
+            default:
+                Gizmos.color = Color.white;
+                break;
+        }
+
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
     }
+
     private bool IsAtLimbCapacity()
     {
         return false;

@@ -12,7 +12,21 @@ public class PlayerInput : MonoBehaviour
     [HideInInspector] public UnityEvent leftHandRelease;
     [HideInInspector] public UnityEvent rightHandRelease;
     private Camera mainCamera;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    private static PlayerInput _instance;
+    public static PlayerInput Instance => _instance;
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    
     void Start()
     {
         if (mainCamera == null)
@@ -45,6 +59,7 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
+    
     public Vector3 GetMousePosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+
 public class HandMovement : MonoBehaviour
 {
     [SerializeField] float maxRadius;
@@ -7,21 +8,26 @@ public class HandMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     private Transform hold;
-    private Transform shoulder;
+    [SerializeField] private Transform shoulder;
     [SerializeField] Transform resting;
 
     private LimbInfo limbInfo;
     private PlayerInput playerInput;
 
-    private void Awake()
-    {           
-        shoulder = transform.parent.transform;
+    private void Start()
+    {
+        if (shoulder == null)
+        {
+            shoulder = transform.parent.transform;
+        }
+
         if (resting == null)
         {
             resting = transform.parent.GetChild(1);
         }
+
         limbInfo = GetComponent<LimbInfo>();
-        playerInput = transform.parent.parent.GetComponent<PlayerInput>();
+        playerInput = PlayerInput.Instance;
     }
 
     private void Update()
@@ -39,24 +45,28 @@ public class HandMovement : MonoBehaviour
                 break;
         }
     }
+
     public void SetHold(Transform newHold)
     {
         hold = newHold;
     }
+
     public Transform GetRestingPosition()
     {
         return resting;
     }
+
     public float GetMaxRadius()
     {
         return maxRadius;
     }
+
     /// <summary>
     /// Moves the hand toward the mouse position and if out range the hand i s placed on the max radius in the direction of the mouse
     /// </summary>
     private void MoveTowardsMouse()
     {
-        if(Vector3.Distance(shoulder.position, playerInput.GetMousePosition()) >= maxRadius)
+        if (Vector3.Distance(shoulder.position, playerInput.GetMousePosition()) >= maxRadius)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
@@ -73,17 +83,19 @@ public class HandMovement : MonoBehaviour
             );
         }
     }
+
     /// <summary>
     /// Moves the hand to the resting position
     /// </summary>
     private void MoveToRest()
     {
         transform.position = Vector3.MoveTowards(
-                transform.position,
-                resting.position,
-                moveSpeed * Time.deltaTime
-            );
+            transform.position,
+            resting.position,
+            moveSpeed * Time.deltaTime
+        );
     }
+
     /// <summary>
     /// Moves the hand to the hold 
     /// </summary>
@@ -94,8 +106,9 @@ public class HandMovement : MonoBehaviour
             transform.position,
             hold.position,
             moveSpeed * Time.deltaTime
-            );
+        );
     }
+
     /// <summary>
     /// Get the point on a circle in the direction of the second vector, intended to be used for hand positioning
     /// </summary>
