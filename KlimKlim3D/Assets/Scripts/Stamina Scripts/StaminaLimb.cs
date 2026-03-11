@@ -25,8 +25,7 @@ public class StaminaLimb : MonoBehaviour
 
     void Update()
     {
-        // Alleen handen reageren op input. 
-        // Voeten worden door een extern script (feetsnapping of zoeits) op OnHold gezet.
+        // Only allow interaction for hands
         if (limbInfo.GetTypeStrict() == LimbType.LeftHand || limbInfo.GetTypeStrict() == LimbType.RightHand)
         {
             if (Input.GetKeyDown(interactionKey)) Grab();
@@ -34,7 +33,7 @@ public class StaminaLimb : MonoBehaviour
         }
         if (limbInfo.GetState() == LimbState.holding)
         {
-            // Als de stamina op is, laat de ledemaat los
+            // Stamina drain logic is handled by ClimbingManager, so we just check for depletion here
             if (currentStamina <= 0) Release();
         }
     }
