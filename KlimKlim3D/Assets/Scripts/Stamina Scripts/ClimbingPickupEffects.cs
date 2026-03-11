@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ClimbingPickupEffects : MonoBehaviour
@@ -5,8 +6,7 @@ public class ClimbingPickupEffects : MonoBehaviour
     // Configurable effect parameters
     private float chalkStaminaMultiplier = 0.5f;
     private float coffeeDurationSeconds = 15f;
-
-    private int holdsRemaining = 0;
+    public int holdsRemaining = 0;
     private float coffeeEffectEndTime = -1f;
 
     public float ChalkStaminaMultiplier => chalkStaminaMultiplier;
@@ -29,4 +29,9 @@ public class ClimbingPickupEffects : MonoBehaviour
             holdsRemaining--;
         }
     }
+
+    public void consumeHandHold()
+    {
+        UseHandHold();
+    }   
 }
