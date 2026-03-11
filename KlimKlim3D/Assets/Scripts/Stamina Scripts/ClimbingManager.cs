@@ -59,7 +59,7 @@ public class ClimbingManager : MonoBehaviour
                 if (IsHand(limb.GetTypeStrict()) && baseRate > 0)
                 {
                     finalRate *= footMultiplier;
-                    if (pickupEffects != null && pickupEffects.HoldsRemaining > 0)
+                    if (pickupEffects != null && pickupEffects.holdsRemaining > 0)
                     {
                         finalRate *= pickupEffects.ChalkStaminaMultiplier;
                     }
@@ -75,7 +75,7 @@ public class ClimbingManager : MonoBehaviour
 
     private void OnHandGrabbed()
     {
-        pickupEffects?.ConsumeHandHold();
+        pickupEffects?.consumeHandHold();
     }
 
     private void TrackHandGrabTransitions()

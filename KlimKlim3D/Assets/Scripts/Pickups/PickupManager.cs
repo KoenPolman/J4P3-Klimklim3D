@@ -31,7 +31,7 @@ public class PickupManager : MonoBehaviour
                 return;
             }
 
-            if (pickupEffects != null && pickupEffects.HoldsRemaining <= 0)
+            if (pickupEffects != null && pickupEffects.holdsRemaining <= 0)
             {
                 chalkInventory--;
                 pickupEffects.ActivateChalkEffect(chalkHoldsPerCharge);
