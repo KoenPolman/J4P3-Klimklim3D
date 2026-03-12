@@ -496,10 +496,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1568439733}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!1001 &182754267
 PrefabInstance:
@@ -683,58 +680,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &403957116 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 1380683650}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &403957117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403957116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
---- !u!1 &433601165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3881880693263165239, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
-  m_PrefabInstance: {fileID: 938731761233028749}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &433601167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433601165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41140e31675d5324091c4a37064f346b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupManager
-  climbingManager: {fileID: 433601168}
-  chalkBodyPickupVisual: {fileID: 0}
-  coffeeBodyPickupVisual: {fileID: 0}
---- !u!114 &433601168 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2097981428589109990, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
-  m_PrefabInstance: {fileID: 938731761233028749}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433601165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9fa19a23c334e046a43d53aed3e6927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClimbingManager
 --- !u!1001 &472041153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1367,32 +1312,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 901912365}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &901912359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 784761227}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &901912365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901912359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!224 &913776499 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 376289141429983208, guid: 7883dd5a2f73d2d42af29651118119cb, type: 3}
@@ -1608,32 +1529,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1116768672}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &1116768671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 1094152899}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1116768672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116768671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!1001 &1167917139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1979,27 +1876,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &1271352485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 2066130333}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1271352486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271352485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!1001 &1380683650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2067,10 +1943,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 403957117}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!114 &1392167194 stripped
 MonoBehaviour:
@@ -2232,27 +2105,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &1421488838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 2109831972}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1421488839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421488838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!1001 &1470916930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2389,10 +2241,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1564332809}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!1001 &1542435792
 PrefabInstance:
@@ -2463,48 +2312,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &1564332803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 1513724668}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1564332809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564332803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
---- !u!1 &1568439727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 140125930}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1568439733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568439727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!1 &1568764588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,27 +2658,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
---- !u!1 &1668016671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-  m_PrefabInstance: {fileID: 1742743558}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1668016672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668016671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08772d67a22d6424685bae396e06c8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Birds.BirdSpawner
-  config: {fileID: 11400000, guid: 625f3266e1a85a24b990a4939b359e03, type: 2}
-  birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
-  sittingPointOverride: {fileID: 0}
-  decideOnStart: 1
 --- !u!1001 &1730492015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3214,10 +3000,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1668016672}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!1001 &1775954827
 PrefabInstance:
@@ -3827,10 +3610,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1271352486}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!1001 &2074426840
 PrefabInstance:
@@ -4037,10 +3817,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3298412468251821771, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1421488839}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056e3c96506e40655899d5491f1ca82d, type: 3}
 --- !u!1001 &938731761233028749
 PrefabInstance:
@@ -4114,10 +3891,7 @@ PrefabInstance:
     - {fileID: 2323017135829644708, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3881880693263165239, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 433601167}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0054a3e7b0ffb0f4eb607d6b2908dfdb, type: 3}
 --- !u!1001 &4701117639039939236
 PrefabInstance:
@@ -4130,6 +3904,10 @@ PrefabInstance:
     - target: {fileID: 608010531718944221, guid: 0d90e0ab9221c9e40aa03ee98ebc68f5, type: 3}
       propertyPath: m_Name
       value: CoffeePickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 608010531718944221, guid: 0d90e0ab9221c9e40aa03ee98ebc68f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6814011109408811812, guid: 0d90e0ab9221c9e40aa03ee98ebc68f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4227,6 +4005,10 @@ PrefabInstance:
     - target: {fileID: 1717323375899161634, guid: bf14cf60c0f4aa943a1e5e7b96c74d2d, type: 3}
       propertyPath: m_Name
       value: ChalkPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717323375899161634, guid: bf14cf60c0f4aa943a1e5e7b96c74d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
