@@ -40,6 +40,7 @@ public class HoldGrabManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
+                //TODO: add check of limb is compatiable
                 limbInfo.SetState(LimbState.holding);
                 GetComponent<HandMovement>().SetHold(hit.transform);
                 return;

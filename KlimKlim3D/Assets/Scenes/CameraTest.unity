@@ -2578,12 +2578,7 @@ MonoBehaviour:
   - {fileID: 97413463}
   - {fileID: 664924956}
   - {fileID: 1118618936}
-  rate3Limbs: 1
-  rate2Limbs: 1.5
-  rate1Limb: 2.5
-  holdsRemaining: 0
-  chalkStaminaMultiplier: 0.5
-  coffeeDurationSeconds: 15
+  pickupEffects: {fileID: 0}
 --- !u!114 &1028701002
 MonoBehaviour:
   m_ObjectHideFlags: 0
