@@ -61,7 +61,7 @@ public class StaminaWheelUI : MonoBehaviour
     }
 
     // Position the UI above the hand
-    void UpdatePosition()
+    void UpdatePosition()   
     {
         Vector3 screenPos = mainCam.WorldToScreenPoint(staminaLimb.transform.position);
         targetScreenPos = screenPos + offset;
