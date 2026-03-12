@@ -13,7 +13,7 @@ public class StaminaWheelUI : MonoBehaviour
    
     // Visual Effects
     private float fadeSpeed = 10f;
-    private Gradient staminaColor; 
+    public Gradient staminaColor; 
 
     // Panic effects parameters
     private float panicThreshold = 0.25f; 
@@ -61,7 +61,7 @@ public class StaminaWheelUI : MonoBehaviour
     }
 
     // Position the UI above the hand
-    void UpdatePosition()
+    void UpdatePosition()   
     {
         Vector3 screenPos = mainCam.WorldToScreenPoint(staminaLimb.transform.position);
         targetScreenPos = screenPos + offset;
