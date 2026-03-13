@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ClimbingPickupEffects))]
+[RequireComponent(typeof(ClimbingPickupStatusEffects))]
 public class PickupManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private ClimbingPickupEffects pickupEffects;
+    [SerializeField] private ClimbingPickupStatusEffects pickupEffects;
 
     [Header("Body Pickup Visuals")]
     [SerializeField] private GameObject chalkBodyPickupVisual;
@@ -18,7 +18,7 @@ public class PickupManager : MonoBehaviour
 
     void Awake()
     {
-        if (pickupEffects == null) pickupEffects = GetComponent<ClimbingPickupEffects>();
+        if (pickupEffects == null) pickupEffects = GetComponent<ClimbingPickupStatusEffects>();
         RefreshBodyPickupVisuals();
     }
 

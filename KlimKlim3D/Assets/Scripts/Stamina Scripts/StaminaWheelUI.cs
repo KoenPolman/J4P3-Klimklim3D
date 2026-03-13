@@ -13,7 +13,11 @@ public class StaminaWheelUI : MonoBehaviour
    
     // Visual Effects
     private float fadeSpeed = 10f;
-    [SerializeField] private Gradient staminaColor; 
+    [SerializeField] private Gradient staminaColor;
+    [SerializeField] private ClimbingPickupStatusEffects pickupEffects;
+
+    // Rainbow (coffee) effect parameters
+    private float rainbowSpeed = 1f;
 
     // Panic effects parameters
     private float panicThreshold = 0.25f; 
@@ -51,7 +55,18 @@ public class StaminaWheelUI : MonoBehaviour
         if (canvasGroup.alpha > 0)
         {
             donutFill.fillAmount = ratio;
-            donutFill.color = staminaColor.Evaluate(ratio);
+
+            bool coffeeActive = pickupEffects != null && pickupEffects.IsCoffeeEffectActive;
+            if (coffeeActive)
+            {
+                float hue = Mathf.Repeat(Time.time * rainbowSpeed, 1f);
+                donutFill.color = Color.HSVToRGB(hue, 1f, 1f);
+            }
+            else
+            {
+                donutFill.color = staminaColor.Evaluate(ratio);
+            }
+
             HandlePanicEffects(ratio);
         }
         else
