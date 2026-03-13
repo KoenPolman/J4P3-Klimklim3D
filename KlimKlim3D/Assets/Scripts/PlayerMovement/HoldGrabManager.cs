@@ -31,7 +31,6 @@ public class HoldGrabManager : MonoBehaviour
     }
     private void GrabHandle()
     {
-        //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
         Debug.DrawRay(transform.position, transform.forward * checkingDistance, Color.red, 1.0f);
@@ -40,9 +39,38 @@ public class HoldGrabManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
-                //TODO: add check of limb is compatiable
-                limbInfo.SetState(LimbState.holding);
-                GetComponent<HandMovement>().SetHold(hit.transform);
+                var holdType = behaviour.GetHoldData().holdType;
+                var limbType = limbInfo.GetTypeStrict();
+                bool canHold = false;
+                string logText = null;
+
+                switch (holdType)
+                {
+                    case HoldType.both:
+                        canHold = true;
+                        logText = "both";
+                        break;
+                    case HoldType.hand:
+                        canHold = limbType == LimbType.LeftHand || limbType == LimbType.RightHand;
+                        logText = "hand";
+                        break;
+                    case HoldType.foot:
+                        canHold = limbType == LimbType.LeftFoot || limbType == LimbType.RightFoot;
+                        logText = "foot";
+                        break;
+                }
+
+                if (canHold)
+                {
+                    limbInfo.SetState(LimbState.holding);
+                    GetComponent<HandMovement>().SetHold(hit.transform);
+                    if(logText != null && logText != "foot") // only log for "both" and "hand" as in your original code
+                        Debug.Log(logText);
+                }
+                else
+                {
+                    Debug.LogWarning("Hold type is not compatible with limb type");
+                }
                 return;
             }
         }

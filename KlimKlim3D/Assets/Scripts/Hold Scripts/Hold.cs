@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Hold : MonoBehaviour
@@ -69,10 +68,10 @@ public class Hold : MonoBehaviour
                 Gizmos.color = Color.yellow;
                 break;
             case HoldType.hand:
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.green;
                 break;
             case HoldType.foot:
-                Gizmos.color = Color.green;
+                Gizmos.color = Color.red;
                 break;
             default:
                 Gizmos.color = Color.white;
