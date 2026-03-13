@@ -55,7 +55,6 @@ public class ClimbingManager : MonoBehaviour
             if (limb.GetState() == LimbState.holding)
             {
                 float finalRate = baseRate;
-
                 if (IsHand(limb.GetTypeStrict()) && baseRate > 0)
                 {
                     finalRate *= footMultiplier;
