@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class ClimbingManager : MonoBehaviour
 {
     public List<LimbInfo> allLimbs;
-    [SerializeField] private ClimbingPickupStatusEffects pickupEffects;
+    [SerializeField] private ClimbingPickupEffects pickupEffects;
     private readonly Dictionary<LimbInfo, bool> handWasHolding = new();
     
     // Stamina drain rates per limb count
@@ -15,7 +15,7 @@ public class ClimbingManager : MonoBehaviour
 
     void Awake()
     {
-        if (pickupEffects == null) pickupEffects = GetComponent<ClimbingPickupStatusEffects>();
+        if (pickupEffects == null) pickupEffects = GetComponent<ClimbingPickupEffects>();
     }
 
     void Start()
