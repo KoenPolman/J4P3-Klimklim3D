@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StandardHold
   m_EditorClassIdentifier: Assembly-CSharp::HoldData
   difficulty: 1
-  holdType: 2
+  holdType: 0
   staminaDrainMultiplier: 1
+  limbCapacity: 2
   inUse: 0

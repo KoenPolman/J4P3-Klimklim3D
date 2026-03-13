@@ -7,10 +7,8 @@ public class HoldGrabManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (playerInput == null)
-        {
-            playerInput = transform.parent.parent.GetComponent<PlayerInput>();
-        }
+        playerInput = PlayerInput.Instance;
+        
         limbInfo = GetComponent<LimbInfo>();
 
         switch (limbInfo.GetTypeStrict())
@@ -36,10 +34,13 @@ public class HoldGrabManager : MonoBehaviour
         //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
+        Debug.DrawRay(transform.position, transform.forward * checkingDistance, Color.red, 1.0f);
+
         if (Physics.Raycast(transform.position, transform.forward, out hit, checkingDistance))
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
+                //TODO: add check of limb is compatiable
                 limbInfo.SetState(LimbState.holding);
                 GetComponent<HandMovement>().SetHold(hit.transform);
                 return;

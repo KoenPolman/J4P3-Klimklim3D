@@ -13,7 +13,7 @@ public class StaminaWheelUI : MonoBehaviour
    
     // Visual Effects
     private float fadeSpeed = 10f;
-    public Gradient staminaColor; 
+    [SerializeField] private Gradient staminaColor; 
 
     // Panic effects parameters
     private float panicThreshold = 0.25f; 
