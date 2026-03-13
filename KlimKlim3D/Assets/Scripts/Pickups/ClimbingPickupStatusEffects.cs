@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ClimbingPickupEffects : MonoBehaviour
+public class ClimbingPickupStatusEffects : MonoBehaviour
 {
     // Configurable effect parameters
     private float chalkStaminaMultiplier = 0.5f;
