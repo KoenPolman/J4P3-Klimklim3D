@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Threading.Tasks;
 public class FallChecker : MonoBehaviour
 {
     private PlayerInfo playerInfo;
@@ -17,17 +17,18 @@ public class FallChecker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (playerInfo.GetLimbOnWallQty() == 0 && hasStarted && GetComponent<Rigidbody>() == null)
+        if (playerInfo.GetHandOnWallQty() == 0 && hasStarted && GetComponent<Rigidbody>() == null)
         {
             gameObject.AddComponent<Rigidbody>();
         }
-        else if (playerInfo.GetLimbOnWallQty() > 0)
+        else if (playerInfo.GetHandOnWallQty() > 0)
         {
             Destroy(gameObject.GetComponent<Rigidbody>());
         }
     }
-    private void EnableFallCheck()
+    private async void EnableFallCheck()
     {
+        await Task.Delay(2000);
         Debug.Log("enable fall check");
         hasStarted = true;
     }

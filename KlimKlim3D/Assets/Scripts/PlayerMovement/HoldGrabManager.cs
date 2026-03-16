@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using UnityEngine;
 public class HoldGrabManager : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class HoldGrabManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
+                if (!behaviour.GetHoldAvailability(limbInfo.GetTypeStrict()))
+                {
+                    return;
+                }
                 limbInfo.PlaceLimbOnHold(hit.transform);
                 return;
             }
