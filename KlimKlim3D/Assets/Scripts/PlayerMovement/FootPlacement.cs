@@ -31,10 +31,7 @@ public class FootPlacement : MonoBehaviour
         // Check if hold is available and within range
         if (targetHold.GetHoldAvailability(limbInfo.GetTypeStrict()) && Vector3.Distance(transform.parent.position, targetHold.transform.position) <= handMovement.GetMaxRadius())
         {
-            // Update limb info which cascades into the foot actually moving to that hold
-            limbInfo.SetState(LimbState.holding);
-            // A hold reference has to be passed on to the hand/limb movement script, i am well aware that this is not the neatest solution so this might be changed in the future but for now please dont touch -Koen
-            handMovement.SetHold(targetHold.transform);
+            limbInfo.PlaceLimbOnHold(targetHold.transform);
         }
         else
         {

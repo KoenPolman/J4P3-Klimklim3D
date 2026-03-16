@@ -4,7 +4,12 @@ public class LimbInfo : MonoBehaviour
 {
     [SerializeField] LimbType type;
     private LimbState state = LimbState.resting;
+    private HandMovement handMovement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void Start()
+    {
+        handMovement = GetComponent<HandMovement>();
+    }
     public LimbState GetState()
     {
         return state;
@@ -21,12 +26,6 @@ public class LimbInfo : MonoBehaviour
     {
         return type;
     }
-    /*
-    public LimbType GetType()
-    {
-
-    }
-    */
     /// <summary>
     /// check if limb is at maximum range, not final
     /// </summary>
@@ -34,5 +33,10 @@ public class LimbInfo : MonoBehaviour
     public bool IsAtMaxRange()
     {
         return false;
+    }
+    public void PlaceLimbOnHold(Transform targetHold)
+    {
+        state = LimbState.holding;
+        handMovement.SetHold(targetHold);
     }
 }
