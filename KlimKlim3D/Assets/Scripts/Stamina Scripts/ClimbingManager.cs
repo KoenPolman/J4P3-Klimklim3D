@@ -4,23 +4,19 @@ using System.Collections.Generic;
 public class ClimbingManager : MonoBehaviour
 {
     public List<LimbInfo> allLimbs;
+    [SerializeField] private ClimbingPickupStatusEffects pickupEffects;
     private readonly Dictionary<LimbInfo, bool> handWasHolding = new();
     
-    [Header("Base Drain Rates")]
-    public float rate3Limbs = 10f;  
-    public float rate2Limbs = 15f; 
-    public float rate1Limb = 25f;  
-
-    [Header("Active Effects")]
-    public int holdsRemaining = 0; 
-    public float chalkStaminaMultiplier = 0.5f;
-    [SerializeField] private float coffeeDurationSeconds = 15f;
-    private bool chalkEffectWasActive = false;
-    private bool coffeeEffectWasActive = false;
-    private float coffeeEffectEndTime = -1f;
+    // Stamina drain rates per limb count
+    private float rate3Limbs = 10f;  
+    private float rate2Limbs = 15f; 
+    private float rate1Limb = 25f;  
     private float Rate4Limbs => -rate1Limb; 
 
-    public bool IsCoffeeEffectActive => Time.time < coffeeEffectEndTime;
+    void Awake()
+    {
+        if (pickupEffects == null) pickupEffects = GetComponent<ClimbingPickupStatusEffects>();
+    }
 
     void Start()
     {
@@ -33,41 +29,11 @@ public class ClimbingManager : MonoBehaviour
         }
     }
 
-    // Called by PickupManager
-    public void ActivateChalkEffect(int holds)
-    {
-        holdsRemaining = Mathf.Max(0, holds);
-        Debug.Log($"[ClimbingManager] Chalk effect activated for {holdsRemaining} holds.");
-    }
-
-    // Called by PickupManager
-    public void ActivateCoffeeEffect()
-    {
-        coffeeEffectEndTime = Time.time + Mathf.Max(0f, coffeeDurationSeconds);
-        Debug.Log($"[ClimbingManager] Coffee effect activated. Stamina drain paused for {coffeeDurationSeconds:0.#} seconds.");
-    }
-
     void Update()
     {
         TrackHandGrabTransitions();
 
-        bool chalkEffectIsActive = holdsRemaining > 0;
-
-        if (chalkEffectWasActive && !chalkEffectIsActive)
-        {
-            Debug.Log("[ClimbingManager] Chalk effect has worn off.");
-        }
-
-        chalkEffectWasActive = chalkEffectIsActive;
-
-        bool coffeeEffectIsActive = IsCoffeeEffectActive;
-
-        if (coffeeEffectWasActive && !coffeeEffectIsActive)
-        {
-            Debug.Log("[ClimbingManager] Coffee effect has worn off.");
-        }
-
-        coffeeEffectWasActive = coffeeEffectIsActive;
+        bool coffeeEffectIsActive = pickupEffects != null && pickupEffects.IsCoffeeEffectActive;
 
         int activeCount = 0;
         int feetActive = 0;
@@ -89,13 +55,13 @@ public class ClimbingManager : MonoBehaviour
             if (limb.GetState() == LimbState.holding)
             {
                 float finalRate = baseRate;
-
                 if (IsHand(limb.GetTypeStrict()) && baseRate > 0)
                 {
                     finalRate *= footMultiplier;
-
-                    // Apply Chalk effect if active
-                    if (holdsRemaining > 0) finalRate *= chalkStaminaMultiplier;
+                    if (pickupEffects != null && pickupEffects.holdsRemaining > 0)
+                    {
+                        finalRate *= pickupEffects.ChalkStaminaMultiplier;
+                    }
                 }
 
                 StaminaLimb staminaLimb = limb.GetComponent<StaminaLimb>();
@@ -108,16 +74,7 @@ public class ClimbingManager : MonoBehaviour
 
     private void OnHandGrabbed()
     {
-        if (holdsRemaining > 0)
-        {
-            holdsRemaining--;
-            Debug.Log($"[ClimbingManager] Chalk hold consumed. Remaining: {holdsRemaining}.");
-
-            if (holdsRemaining == 0)
-            {
-                Debug.Log("[ClimbingManager] Chalk effect expired after final boosted hold.");
-            }
-        }
+        pickupEffects?.consumeHandHold();
     }
 
     private void TrackHandGrabTransitions()
@@ -131,7 +88,6 @@ public class ClimbingManager : MonoBehaviour
 
             if (!wasHolding && isHolding)
             {
-                Debug.Log($"[ClimbingManager] New hand hold detected on {limb.name}.");
                 OnHandGrabbed();
             }
 

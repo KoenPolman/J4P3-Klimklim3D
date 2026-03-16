@@ -39,6 +39,6 @@ public class CoreMovement : MonoBehaviour
     }
     private Vector3 GetPositionBetweenHands()
     {
-        return (leftHand.position + rightHand.position) / 2f - new Vector3(0,0.75f,0);
+        return (leftHand.position + rightHand.position) / 2f - new Vector3(0,.75f,0);
     }
 }
