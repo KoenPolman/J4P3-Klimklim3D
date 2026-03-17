@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-
+// Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class FootPlacement : MonoBehaviour
 {
     private Hold[] holds;// References to holds
