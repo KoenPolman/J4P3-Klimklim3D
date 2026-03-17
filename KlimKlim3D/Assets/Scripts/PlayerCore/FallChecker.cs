@@ -24,6 +24,11 @@ public class FallChecker : MonoBehaviour
         else if (playerInfo.GetHandOnWallQty() > 0)
         {
             Destroy(gameObject.GetComponent<Rigidbody>());
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                Quaternion.Euler(0, 0, 0),
+                10f
+                );
         }
     }
     private async void EnableFallCheck()

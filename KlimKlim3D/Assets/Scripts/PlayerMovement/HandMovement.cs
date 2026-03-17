@@ -50,6 +50,10 @@ public class HandMovement : MonoBehaviour
     {
         hold = newHold;
     }
+    public Transform GetHold()
+    {
+        return hold;
+    }
 
     public Transform GetRestingPosition()
     {
