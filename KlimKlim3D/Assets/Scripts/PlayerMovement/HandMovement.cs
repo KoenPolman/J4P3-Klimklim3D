@@ -144,7 +144,7 @@ public class HandMovement : MonoBehaviour
 
         if (direction == Vector3.zero)
         {
-            direction = Vector3.right; // fallback direction
+            direction = Vector3.right; // Fallback direction
         }
 
         direction.Normalize();

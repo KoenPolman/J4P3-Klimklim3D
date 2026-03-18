@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Script written by Sietse Houkes & Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
