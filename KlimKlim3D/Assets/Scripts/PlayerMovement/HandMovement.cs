@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 // Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
-public class HandMovement : MonoBehaviour
+public class HandMovement : MonoBehaviour // TODO: change name of class, this class is also used for the movement of the feet so "HandMovement" is not apt naming
 {
     [SerializeField] float maxRadius;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float moveSpeed = 10f;
 
     private Transform hold;
-    [SerializeField] private Transform shoulder;
+    [SerializeField] private Transform shoulder; // TODO: change name from "shoulder" to "limbOrgin" due to this script also being used for the legs of the player character
     [SerializeField] Transform resting;
 
     private LimbInfo limbInfo;
