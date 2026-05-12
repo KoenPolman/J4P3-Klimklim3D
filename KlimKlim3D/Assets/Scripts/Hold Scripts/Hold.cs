@@ -43,7 +43,7 @@ public class Hold : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hold + limb type mismatch");
+            //Debug.Log("Hold + limb type mismatch");
             return false;
         }
     }
@@ -86,7 +86,7 @@ public class Hold : MonoBehaviour
 
     private bool IsAtLimbCapacity()
     {
-        return limbCount >= holdData.limbCapacity;
+        return limbCount > holdData.limbCapacity;
     }
     public void CheckIn()
     {

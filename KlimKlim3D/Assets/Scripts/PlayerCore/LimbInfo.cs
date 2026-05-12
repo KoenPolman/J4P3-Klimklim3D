@@ -35,7 +35,7 @@ public class LimbInfo : MonoBehaviour
         return false;
     }
     /// <summary>
-    /// Places this limb on hold, also takes care of checking in and out of the hold to account for maximum hold capacity
+    /// Places this limb on hold, also takes care of checking in and out of the hold to account for maximum hold capacity and sets the limb state to holding
     /// </summary>
     /// <param name="targetHold"></param>
     public void PlaceLimbOnHold(Transform targetHold)
