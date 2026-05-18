@@ -23,6 +23,7 @@ public class HoldData : ScriptableObject
     [Range(0,5)]
     public float staminaDrainMultiplier = 1f;
     public int limbCapacity = 2;
+    public Color gizmoColour = Color.white;
     
-    public bool inUse = false;
+    //public bool inUse = false; // Value is not used
 }

@@ -66,7 +66,9 @@ public class Hold : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        switch (GetHoldData().holdType)
+        Gizmos.color = GetHoldData().gizmoColour;
+        /*
+        switch ()
         {
             case HoldType.both:
                 Gizmos.color = Color.yellow;
@@ -81,6 +83,7 @@ public class Hold : MonoBehaviour
                 Gizmos.color = Color.white;
                 break;
         }
+        */
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
     }
 
