@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class LimbInfo : MonoBehaviour
 {
     [SerializeField] LimbType type;
@@ -34,9 +34,19 @@ public class LimbInfo : MonoBehaviour
     {
         return false;
     }
+    /// <summary>
+    /// Places this limb on hold, also takes care of checking in and out of the hold to account for maximum hold capacity and sets the limb state to holding
+    /// </summary>
+    /// <param name="targetHold"></param>
     public void PlaceLimbOnHold(Transform targetHold)
     {
+        Debug.Log("Limb has been placed on hold");
+        if (handMovement.GetHold() != null)
+        {
+            handMovement.GetHold().GetComponent<Hold>().CheckOut();
+        }
         state = LimbState.holding;
+        targetHold.GetComponent<Hold>().CheckIn();
         handMovement.SetHold(targetHold);
     }
 }

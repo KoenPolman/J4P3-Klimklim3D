@@ -1,4 +1,6 @@
+using Mono.Cecil;
 using UnityEngine;
+// Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class HoldGrabManager : MonoBehaviour
 {
     [SerializeField] float checkingDistance;
@@ -7,12 +9,14 @@ public class HoldGrabManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Input can be added trough serialize field, if not the behavior is attempted to be retrieved by code
         if (playerInput == null)
         {
             playerInput = transform.parent.parent.GetComponent<PlayerInput>();
         }
         limbInfo = GetComponent<LimbInfo>();
 
+        // Depending on the type of limb this script is on the corresponding input events are assinged to the functions in this script
         switch (limbInfo.GetTypeStrict())
         {
             case LimbType.LeftHand:
@@ -24,28 +28,37 @@ public class HoldGrabManager : MonoBehaviour
                 playerInput.rightHandRelease.AddListener(Reach);
                 break;
             case LimbType.LeftFoot:
-                //nothing
+                // Nothing
                 break;
             case LimbType.RightFoot:
-                //nothing
+                // Nothing
                 break;
         }
     }
+    /// <summary>
+    /// Validate the existance and availibility of a hold and if so grab it 
+    /// </summary>
     private void GrabHandle()
     {
-        //Refactor dit later met een verzoek naar de hold of die beschikbaar is
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, checkingDistance))
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
+                if (!behaviour.GetHoldAvailability(limbInfo.GetTypeStrict()))
+                {
+                    return;
+                }
                 limbInfo.PlaceLimbOnHold(hit.transform);
                 return;
             }
         }
         limbInfo.SetState(LimbState.resting);
     }
+    /// <summary>
+    /// Sets the LimbState to reaching
+    /// </summary>
     private void Reach()
     {
         limbInfo.SetState(LimbState.reaching);

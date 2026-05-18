@@ -177,7 +177,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
-  resting: {fileID: 0}
+  shoulder: {fileID: 2976333421888894745}
+  resting: {fileID: 2092748134811399945}
 --- !u!114 &444125549538470095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +839,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+  shoulder: {fileID: 0}
   resting: {fileID: 0}
 --- !u!114 &6046496120029839889
 MonoBehaviour:
@@ -1086,7 +1088,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
-  resting: {fileID: 0}
+  shoulder: {fileID: 4941056680908358315}
+  resting: {fileID: 8489641896257391798}
 --- !u!114 &1627933418578670818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,6 +1454,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   moveSpeed: 10
+  shoulder: {fileID: 0}
   resting: {fileID: 0}
 --- !u!114 &592328491195913192
 MonoBehaviour:

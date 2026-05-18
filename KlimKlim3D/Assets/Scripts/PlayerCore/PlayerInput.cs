@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
-
+// Script written by Koen Polman & Sietse Houkes for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;

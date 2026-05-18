@@ -1,12 +1,12 @@
 using UnityEngine;
-
+// Script written by Sietse Houkes & Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
     [SerializeField] Collider interactionCollider;
     private MeshFilter meshFilter;
     private Mesh[] meshes;
-
+    private int limbCount = 0;
     /// <summary>
     /// Returns hold data
     /// </summary>
@@ -25,6 +25,7 @@ public class Hold : MonoBehaviour
     {
         if (IsAtLimbCapacity())
         {
+            Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.limbCapacity);
             return false;
         }
 
@@ -40,8 +41,11 @@ public class Hold : MonoBehaviour
         {
             return true;
         }
-
-        return false;
+        else
+        {
+            //Debug.Log("Hold + limb type mismatch");
+            return false;
+        }
     }
 
     private void Awake()
@@ -77,12 +81,24 @@ public class Hold : MonoBehaviour
                 Gizmos.color = Color.white;
                 break;
         }
-
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
     }
 
     private bool IsAtLimbCapacity()
     {
-        return false;
+        return limbCount > holdData.limbCapacity;
+    }
+    public void CheckIn()
+    {
+        limbCount++;
+    }
+    public void CheckOut()
+    {
+        limbCount--;
+
+        if (limbCount < 0)
+        {
+            limbCount = 0;
+        }
     }
 }
