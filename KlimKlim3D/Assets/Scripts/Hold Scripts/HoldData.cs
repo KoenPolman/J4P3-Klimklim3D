@@ -1,28 +1,43 @@
 using UnityEngine;
 
-using UnityEngine.UIElements;
-
 [CreateAssetMenu(fileName = "Hold", menuName = "Holds/Hold")]
 public class HoldData : ScriptableObject
 {
-    /// <summary>
-    /// gamemode difficulty multiplier
-    /// 1 is normal 2 is hard
-    /// </summary>
-    [Range(0,2)]
-    public float difficulty = 1f;
+    [SerializeField, Range(0f, 2f)] float difficulty = 1f;
 
-    /// <summary>
-    /// Defines the type of hold hand, foot, or both
-    /// </summary>
-    public HoldType holdType = HoldType.both;
+    [SerializeField] HoldType holdType = HoldType.both;
 
-    /// <summary>
-    /// Defines the multiplier for stamina drain rate
-    /// </summary>
-    [Range(0,5)]
-    public float staminaDrainMultiplier = 1f;
-    public int limbCapacity = 2;
+    [SerializeField, Range(0f, 5f)] float staminaDrainMultiplier = 1f;
+
+    [SerializeField] int limbCapacity = 2;
+
+    [SerializeField] bool inUse = false;
     
-    public bool inUse = false;
+    //public get only properties
+
+    /// <summary>
+    /// Gamemode difficulty multiplier.
+    /// 1 is normal, 2 is hard.
+    /// </summary>
+    public float Difficulty => difficulty;
+
+    /// <summary>
+    /// Defines the type of hold: hand, foot, or both.
+    /// </summary>
+    public HoldType HoldType => holdType;
+
+    /// <summary>
+    /// Defines the multiplier for stamina drain rate.
+    /// </summary>
+    public float StaminaDrainMultiplier => staminaDrainMultiplier;
+
+    /// <summary>
+    /// Returns the limb capacity
+    /// </summary>
+    public int LimbCapacity => limbCapacity;
+
+    /// <summary>
+    /// Returns the inUse status
+    /// </summary>
+    public bool InUse => inUse;
 }

@@ -25,19 +25,19 @@ public class Hold : MonoBehaviour
     {
         if (IsAtLimbCapacity())
         {
-            Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.limbCapacity);
+            Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.LimbCapacity);
             return false;
         }
 
-        if (holdData.holdType == HoldType.both)
+        if (holdData.HoldType == HoldType.both)
         {
             return true;
         }
-        else if (holdData.holdType == HoldType.hand && (type == LimbType.LeftHand || type == LimbType.RightHand))
+        else if (holdData.HoldType == HoldType.hand && (type == LimbType.LeftHand || type == LimbType.RightHand))
         {
             return true;
         }
-        else if (holdData.holdType == HoldType.foot && (type == LimbType.LeftFoot || type == LimbType.RightFoot))
+        else if (holdData.HoldType == HoldType.foot && (type == LimbType.LeftFoot || type == LimbType.RightFoot))
         {
             return true;
         }
@@ -66,7 +66,7 @@ public class Hold : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        switch (GetHoldData().holdType)
+        switch (GetHoldData().HoldType)
         {
             case HoldType.both:
                 Gizmos.color = Color.yellow;
@@ -86,7 +86,7 @@ public class Hold : MonoBehaviour
 
     private bool IsAtLimbCapacity()
     {
-        return limbCount > holdData.limbCapacity;
+        return limbCount > holdData.LimbCapacity;
     }
     public void CheckIn()
     {
