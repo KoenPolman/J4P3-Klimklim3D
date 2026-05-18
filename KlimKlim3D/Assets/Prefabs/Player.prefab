@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092748134811399945}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosRF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 1191314632203722978}
   - component: {fileID: 2978900129674755436}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: HandR
   m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,7 +921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36767591897218582}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosRH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8489641896257391798}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosLF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338415722586876509}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosLH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1359,7 +1359,7 @@ GameObject:
   - component: {fileID: 8448249354980829196}
   - component: {fileID: 4934740231206613231}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: HandL
   m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
