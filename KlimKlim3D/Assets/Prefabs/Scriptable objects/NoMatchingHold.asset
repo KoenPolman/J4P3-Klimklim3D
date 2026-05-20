@@ -15,5 +15,5 @@ MonoBehaviour:
   difficulty: 1
   holdType: 0
   staminaDrainMultiplier: 1
-  limbCapacity: 2
-  inUse: 0
+  limbCapacity: 1
+  gizmoColour: {r: 1, g: 0, b: 0, a: 1}
