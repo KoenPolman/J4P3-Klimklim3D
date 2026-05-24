@@ -40,13 +40,28 @@ public class LimbInfo : MonoBehaviour
     /// <param name="targetHold"></param>
     public void PlaceLimbOnHold(Transform targetHold)
     {
-        Debug.Log("Limb has been placed on hold");
+        if (handMovement.GetHold() == targetHold)
+        {
+            return;
+        }
+
         if (handMovement.GetHold() != null)
         {
             handMovement.GetHold().GetComponent<Hold>().CheckOut();
         }
+
         state = LimbState.holding;
         targetHold.GetComponent<Hold>().CheckIn();
         handMovement.SetHold(targetHold);
+
+        Debug.Log("Limb has been placed on hold");
+    }
+    public void RemoveLimbFromHold()
+    {
+        state = LimbState.resting;
+        if (handMovement.GetHold() != null)
+        {
+            handMovement.GetHold().GetComponent<Hold>().CheckOut();
+        }
     }
 }
