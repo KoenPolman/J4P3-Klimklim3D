@@ -1,9 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 // Script written by Sietse Houkes & Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
     [SerializeField] Collider interactionCollider;
+    [HideInInspector] public UnityEvent OnGrab;
     private MeshFilter meshFilter;
     private Mesh[] meshes;
     private int limbCount = 0;
@@ -93,6 +96,7 @@ public class Hold : MonoBehaviour
     }
     public void CheckIn()
     {
+        OnGrab.Invoke();
         limbCount++;
     }
     public void CheckOut()

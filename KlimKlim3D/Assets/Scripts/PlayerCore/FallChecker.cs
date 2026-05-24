@@ -8,10 +8,11 @@ public class FallChecker : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // +Remove this in exchange for a mechanic where the fall check is enabled when two hands are on the wall
         // Find the player input script and subscribe to input events for enableing the fall check
         PlayerInput input = GetComponent<PlayerInput>();
-        input.leftHandGrab.AddListener(EnableFallCheck);
-        input.rightHandGrab.AddListener(EnableFallCheck);
+        input.leftHandGrab.AddListener(TryEnableFallCheck);
+        input.rightHandGrab.AddListener(TryEnableFallCheck);
 
         playerInfo = GetComponent<PlayerInfo>();
     }
@@ -38,10 +39,21 @@ public class FallChecker : MonoBehaviour
     /// <summary>
     /// Enables the fall check with a delay
     /// </summary>
-    private async void EnableFallCheck()
+    private async void TryEnableFallCheck()
     {
-        await Task.Delay(2000);
+        if (hasStarted)
+            return;
+
+        // Fall check is enabled when the player has 2 hands on the wall
+        if (playerInfo.GetHandOnWallQty() >= 2)
+        {
+            hasStarted = true;
+            CoreMovement coreMovement = GetComponent<CoreMovement>();
+            coreMovement.enable();
+        }
+            
+
         Debug.Log("fall check has been enabled");
-        hasStarted = true;
+        
     }
 }
