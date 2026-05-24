@@ -10,7 +10,7 @@ public class FallChecker : MonoBehaviour
     {
         // +Remove this in exchange for a mechanic where the fall check is enabled when two hands are on the wall
         // Find the player input script and subscribe to input events for enableing the fall check
-        PlayerInput input = GetComponent<PlayerInput>();
+        PlayerInput input = FindFirstObjectByType<PlayerInput>();
         input.leftHandGrab.AddListener(TryEnableFallCheck);
         input.rightHandGrab.AddListener(TryEnableFallCheck);
 

@@ -14,8 +14,10 @@ public class ResetManager : MonoBehaviour
     {
         if (Keyboard.current.rKey.wasReleasedThisFrame)
         {
+            /*
             PlayerInput playerInput = FindAnyObjectByType<PlayerInput>();
             Destroy(playerInput.gameObject);
+            */
 
             sceneController.RebuildScene();
 

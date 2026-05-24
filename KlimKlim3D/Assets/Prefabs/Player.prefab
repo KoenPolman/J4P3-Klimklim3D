@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 75681407463183244}
   - component: {fileID: 4255235394931480690}
   - component: {fileID: 2097981428589109990}
-  - component: {fileID: 2124959933900897700}
   - component: {fileID: 5438166302938323973}
   - component: {fileID: 8829027571349755606}
   - component: {fileID: 3222547113691239327}
@@ -556,33 +555,6 @@ MonoBehaviour:
   - {fileID: 1198993339348292937}
   - {fileID: 3390584880875225541}
   pickupEffects: {fileID: 0}
---- !u!114 &2124959933900897700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3881880693263165239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e5aada7781f454bbfaf7c6697d5978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  leftHandGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightHandGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  leftHandRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  rightHandRelease:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5438166302938323973
 MonoBehaviour:
   m_ObjectHideFlags: 0
