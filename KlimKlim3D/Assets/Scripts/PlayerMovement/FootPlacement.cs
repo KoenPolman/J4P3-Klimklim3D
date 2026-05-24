@@ -29,6 +29,11 @@ public class FootPlacement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (holds.Length <= 0)
+        {
+            return;
+        }
+
         Hold targetHold = holds[0];
         List<Hold> validHolds = new List<Hold>();
         Debug.Log("Total count of holds in level: " + holds.Length);
