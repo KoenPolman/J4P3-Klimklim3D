@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 444125549538470095}
   - component: {fileID: 7350689555517991191}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: FootR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 1627933418578670818}
   - component: {fileID: 4373452848508465582}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: FootL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

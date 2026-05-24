@@ -89,7 +89,7 @@ public class Hold : MonoBehaviour
 
     private bool IsAtLimbCapacity()
     {
-        return limbCount > holdData.limbCapacity;
+        return limbCount >= holdData.limbCapacity;
     }
     public void CheckIn()
     {
@@ -103,5 +103,9 @@ public class Hold : MonoBehaviour
         {
             limbCount = 0;
         }
+    }
+    public int GetLimbCount()
+    {
+        return limbCount;
     }
 }
