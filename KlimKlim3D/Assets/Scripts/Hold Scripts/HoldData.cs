@@ -39,5 +39,6 @@ public class HoldData : ScriptableObject
     /// <summary>
     /// Returns the inUse status
     /// </summary>
-    public bool InUse => inUse;
+    //public bool InUse => inUse;
+    public Color gizmoColour = Color.white;
 }
