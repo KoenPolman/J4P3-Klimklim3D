@@ -47,6 +47,7 @@ public class LimbInfo : MonoBehaviour
 
         if (handMovement.GetHold() != null)
         {
+            Debug.Log($"Limb checkout {type}");
             handMovement.GetHold().GetComponent<Hold>().CheckOut();
         }
 
@@ -62,6 +63,8 @@ public class LimbInfo : MonoBehaviour
         if (handMovement.GetHold() != null)
         {
             handMovement.GetHold().GetComponent<Hold>().CheckOut();
+            //sets reference to null
+            handMovement.SetHold(null);
         }
     }
 }

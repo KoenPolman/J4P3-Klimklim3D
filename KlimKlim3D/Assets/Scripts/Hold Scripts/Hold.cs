@@ -46,7 +46,7 @@ public class Hold : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hold + limb type mismatch");
+            //Debug.Log("Hold + limb type mismatch");
             return false;
         }
     }

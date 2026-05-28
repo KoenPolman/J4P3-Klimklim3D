@@ -13,9 +13,9 @@ public class HoldData : ScriptableObject
 
     [SerializeField] bool inUse = false;
 
-    [SerializeField] private Color gizmoColour = Color.white;
+    [SerializeField] Color gizmoColour = Color.white;
     
-    //public get only properties
+    //public returns
 
     /// <summary>
     /// Gamemode difficulty multiplier.
