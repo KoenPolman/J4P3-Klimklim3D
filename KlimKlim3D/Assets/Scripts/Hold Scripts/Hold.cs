@@ -1,9 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 // Script written by Sietse Houkes & Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class Hold : MonoBehaviour
 {
     [SerializeField] HoldData holdData;
     [SerializeField] Collider interactionCollider;
+    [HideInInspector] public UnityEvent OnGrab;
     private MeshFilter meshFilter;
     private Mesh[] meshes;
     private int limbCount = 0;
@@ -66,30 +69,18 @@ public class Hold : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        switch (GetHoldData().HoldType)
-        {
-            case HoldType.both:
-                Gizmos.color = Color.yellow;
-                break;
-            case HoldType.hand:
-                Gizmos.color = Color.green;
-                break;
-            case HoldType.foot:
-                Gizmos.color = Color.red;
-                break;
-            default:
-                Gizmos.color = Color.white;
-                break;
-        }
+        Gizmos.color = GetHoldData().gizmoColour;
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
     }
 
     private bool IsAtLimbCapacity()
     {
-        return limbCount > holdData.LimbCapacity;
+
+        return limbCount >= holdData.limbCapacity;
     }
     public void CheckIn()
     {
+        OnGrab.Invoke();
         limbCount++;
     }
     public void CheckOut()
@@ -100,5 +91,9 @@ public class Hold : MonoBehaviour
         {
             limbCount = 0;
         }
+    }
+    public int GetLimbCount()
+    {
+        return limbCount;
     }
 }

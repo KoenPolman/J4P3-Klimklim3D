@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); // Deze regel
     }
     
     void Start()

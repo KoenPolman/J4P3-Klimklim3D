@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 // Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class CoreMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     private Transform leftHand;
     private Transform rightHand;
+    private bool enabledMove = false;
     void Start()
     {
         // Get all the limbs
@@ -32,12 +34,20 @@ public class CoreMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Player torso is moved to position derived from GetPositionBetweenHands function
-        transform.position = Vector3.MoveTowards(
+        switch (enabledMove)
+        {
+            case true:
+                // Player torso is moved to position derived from GetPositionBetweenHands function
+                transform.position = Vector3.MoveTowards(
                 transform.position,
                 GetPositionBetweenHands(),
                 moveSpeed * Time.deltaTime
-            );
+                );
+                break;
+            case false:
+                break;
+        }
+        
     }
     /// <summary>
     /// Calculates the position between the hands
@@ -46,5 +56,9 @@ public class CoreMovement : MonoBehaviour
     private Vector3 GetPositionBetweenHands()
     {
         return (leftHand.position + rightHand.position) / 2f - new Vector3(0,.75f,0);
+    }
+    public void enable()
+    {
+        enabledMove = true;
     }
 }

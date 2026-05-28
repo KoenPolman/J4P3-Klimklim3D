@@ -12,7 +12,7 @@ public class HoldGrabManager : MonoBehaviour
         // Input can be added trough serialize field, if not the behavior is attempted to be retrieved by code
         if (playerInput == null)
         {
-            playerInput = transform.parent.parent.GetComponent<PlayerInput>();
+            playerInput = FindFirstObjectByType<PlayerInput>();
         }
         limbInfo = GetComponent<LimbInfo>();
 

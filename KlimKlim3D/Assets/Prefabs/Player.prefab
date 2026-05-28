@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092748134811399945}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosRF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 444125549538470095}
   - component: {fileID: 7350689555517991191}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: FootR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,6 @@ GameObject:
   - component: {fileID: 75681407463183244}
   - component: {fileID: 4255235394931480690}
   - component: {fileID: 2097981428589109990}
-  - component: {fileID: 2124959933900897700}
   - component: {fileID: 5438166302938323973}
   - component: {fileID: 8829027571349755606}
   - component: {fileID: 3222547113691239327}
@@ -556,33 +555,6 @@ MonoBehaviour:
   - {fileID: 1198993339348292937}
   - {fileID: 3390584880875225541}
   pickupEffects: {fileID: 0}
---- !u!114 &2124959933900897700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3881880693263165239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e5aada7781f454bbfaf7c6697d5978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  leftHandGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  rightHandGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  leftHandRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  rightHandRelease:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5438166302938323973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +716,7 @@ GameObject:
   - component: {fileID: 1191314632203722978}
   - component: {fileID: 2978900129674755436}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: HandR
   m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,7 +893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36767591897218582}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosRH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +931,7 @@ GameObject:
   - component: {fileID: 1627933418578670818}
   - component: {fileID: 4373452848508465582}
   m_Layer: 0
-  m_Name: Foot
+  m_Name: FootL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8489641896257391798}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosLF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338415722586876509}
   m_Layer: 0
-  m_Name: RestingPos
+  m_Name: RestingPosLH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1359,7 +1331,7 @@ GameObject:
   - component: {fileID: 8448249354980829196}
   - component: {fileID: 4934740231206613231}
   m_Layer: 0
-  m_Name: Hand
+  m_Name: HandL
   m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
