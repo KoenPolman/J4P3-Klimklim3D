@@ -1,6 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+
 // Script written by Sietse Houkes & Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class Hold : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class Hold : MonoBehaviour
     {
         if (IsAtLimbCapacity())
         {
-            Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.LimbCapacity);
+            Debug.Log("Hold is at max capacity, limb count: " + limbCount + " capacity: " + holdData.LimbCapacity);
             return false;
         }
 
@@ -46,7 +46,7 @@ public class Hold : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Hold + limb type mismatch");
+            Debug.Log("Hold + limb type mismatch");
             return false;
         }
     }
@@ -69,14 +69,14 @@ public class Hold : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        Gizmos.color = GetHoldData().gizmoColour;
+        Gizmos.color = GetHoldData().GizmoColour;
         Gizmos.DrawCube(transform.position, new Vector3(.4f, .4f, .4f));
     }
 
     private bool IsAtLimbCapacity()
     {
 
-        return limbCount >= holdData.limbCapacity;
+        return limbCount >= holdData.LimbCapacity;
     }
     public void CheckIn()
     {

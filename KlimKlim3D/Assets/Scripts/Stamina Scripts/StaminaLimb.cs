@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class StaminaLimb : MonoBehaviour
 {
     public KeyCode interactionKey;

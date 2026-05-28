@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 // Script written by Koen Polman for KlimKlim3D i.e. Master project, 2/2026 - 4/2026
 public class CoreMovement : MonoBehaviour
 {

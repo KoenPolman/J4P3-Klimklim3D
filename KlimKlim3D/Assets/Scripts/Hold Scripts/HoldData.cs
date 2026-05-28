@@ -12,6 +12,8 @@ public class HoldData : ScriptableObject
     [SerializeField] int limbCapacity = 2;
 
     [SerializeField] bool inUse = false;
+
+    [SerializeField] private Color gizmoColour = Color.white;
     
     //public get only properties
 
@@ -37,8 +39,12 @@ public class HoldData : ScriptableObject
     public int LimbCapacity => limbCapacity;
 
     /// <summary>
+    /// returns gizmo color
+    /// </summary>
+    public Color GizmoColour => gizmoColour;
+    
+    /// <summary>
     /// Returns the inUse status
     /// </summary>
     //public bool InUse => inUse;
-    public Color gizmoColour = Color.white;
 }
