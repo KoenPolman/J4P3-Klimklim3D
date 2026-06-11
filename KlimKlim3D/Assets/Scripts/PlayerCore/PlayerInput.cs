@@ -62,6 +62,11 @@ public class PlayerInput : MonoBehaviour
     
     public Vector3 GetMousePosition()
     {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
