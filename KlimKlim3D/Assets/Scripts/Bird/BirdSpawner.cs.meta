@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 08772d67a22d6424685bae396e06c8a9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - config: {fileID: 11400000, guid: ea529791e6fba2a45bdd5b373406fb10, type: 2}
+  - birdPrefab: {fileID: 9009601882810339143, guid: 3e4788b7277d5744f8a9d6dc58138623, type: 3}
+  - sittingPointOverride: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

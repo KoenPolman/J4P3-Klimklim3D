@@ -6,11 +6,11 @@ public class ClimbingManager : MonoBehaviour
     public List<LimbInfo> allLimbs;
     [SerializeField] private ClimbingPickupStatusEffects pickupEffects;
     private readonly Dictionary<LimbInfo, bool> handWasHolding = new();
-    
+
     // Stamina drain rates per limb count
-    private float rate3Limbs = 10f;  
-    private float rate2Limbs = 15f; 
-    private float rate1Limb = 25f;  
+    [SerializeField] float rate3Limbs = 10f;
+    [SerializeField] float rate2Limbs = 15f;
+    [SerializeField] float rate1Limb = 25f;  
     private float Rate4Limbs => -rate1Limb; 
 
     void Awake()

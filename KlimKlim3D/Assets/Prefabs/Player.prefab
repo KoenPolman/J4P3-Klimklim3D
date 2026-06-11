@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 8829027571349755606}
   - component: {fileID: 3222547113691239327}
   - component: {fileID: 7407272306939916551}
+  - component: {fileID: 1168643221626875018}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -607,6 +608,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClimbingPickupEffects
   holdsRemaining: 0
+--- !u!114 &1168643221626875018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881880693263165239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd59a5941fe9c64fa42e830be6a90d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartingPosMover
+  StartPositions: []
 --- !u!1 &4006465917859309735
 GameObject:
   m_ObjectHideFlags: 0
