@@ -7,7 +7,7 @@ public class HandMovement : MonoBehaviour // TODO: change name of class, this cl
     [SerializeField] private float moveSpeed = 10f;
 
     private Transform hold;
-    [SerializeField] private Transform shoulder; // TODO: change name from "shoulder" to "limbOrgin" due to this script also being used for the legs of the player character
+    [SerializeField] private Transform limbOrigin; // TODO: change name from "shoulder" to "limbOrgin" due to this script also being used for the legs of the player character
     [SerializeField] Transform resting;
 
     private LimbInfo limbInfo;
@@ -16,9 +16,9 @@ public class HandMovement : MonoBehaviour // TODO: change name of class, this cl
     private void Start()
     {
         //if the shoulder and resting position are not assigned they will be attemted to be looked up trough code
-        if (shoulder == null)
+        if (limbOrigin == null)
         {
-            shoulder = transform.parent.transform;
+            limbOrigin = transform.parent.transform;
         }
 
         if (resting == null)
@@ -84,12 +84,12 @@ public class HandMovement : MonoBehaviour // TODO: change name of class, this cl
     /// </summary>
     private void MoveTowardsMouse()
     {
-        if (Vector3.Distance(shoulder.position, playerInput.GetMousePosition()) >= maxRadius)
+        if (Vector3.Distance(limbOrigin.position, playerInput.GetMousePosition()) >= maxRadius)
         {
             // If within the max range move to the mouse position
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                GetPointOnCircle(shoulder.position, playerInput.GetMousePosition(), maxRadius),
+                GetPointOnCircle(limbOrigin.position, playerInput.GetMousePosition(), maxRadius),
                 moveSpeed * Time.deltaTime
             );
         }

@@ -35,7 +35,7 @@ public class FootPlacement : MonoBehaviour
 
         Hold targetHold = holds[0];
         List<Hold> validHolds = new List<Hold>();
-        Debug.Log("Total count of holds in level: " + holds.Length);
+        //!Debug.Log("Total count of holds in level: " + holds.Length);
         // Check for holds in range
         for (int i = 0; i < holds.Length; i++)
         {
@@ -44,11 +44,11 @@ public class FootPlacement : MonoBehaviour
                 validHolds.Add(holds[i]);
             }
         }
-        Debug.Log("Total count of found valid holds: " + validHolds.Count);
+        //!Debug.Log("Total count of found valid holds: " + validHolds.Count);
         // If no hold is available go to the resting position
         if (validHolds.Count <= 0)
         {
-            Debug.Log("Foot placement ended early for no valid holds were found");
+            //!Debug.Log("Foot placement ended early for no valid holds were found");
             limbInfo.SetState(LimbState.resting);
             limbInfo.RemoveLimbFromHold();
             return;
