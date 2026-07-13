@@ -46,10 +46,13 @@ public class HoldGrabManager : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Hold>(out var behaviour))
             {
+                Debug.Log("Hold found");
                 if (!behaviour.GetHoldAvailability(limbInfo.GetTypeStrict()))
                 {
+                    Debug.Log("Hold is not available for this limb");
                     return;
                 }
+                Debug.Log("Hold is available and has been placed on it");
                 limbInfo.PlaceLimbOnHold(hit.transform);
                 return;
             }
@@ -61,6 +64,7 @@ public class HoldGrabManager : MonoBehaviour
     /// </summary>
     private void Reach()
     {
+        limbInfo.RemoveLimbFromHold();
         limbInfo.SetState(LimbState.reaching);
     }
 }

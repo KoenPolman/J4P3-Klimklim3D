@@ -51,9 +51,6 @@ public class FallChecker : MonoBehaviour
             CoreMovement coreMovement = GetComponent<CoreMovement>();
             coreMovement.enable();
         }
-            
-
-        Debug.Log("fall check has been enabled");
-        
+        //Debug.Log("fall check has been enabled");
     }
 }

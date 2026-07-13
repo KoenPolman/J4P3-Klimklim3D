@@ -28,7 +28,7 @@ public class Hold : MonoBehaviour
     {
         if (IsAtLimbCapacity())
         {
-            Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.limbCapacity);
+            //Debug.Log("Hold is at max capacity, limbcount: " + limbCount + " capacity: " + holdData.limbCapacity);
             return false;
         }
 
