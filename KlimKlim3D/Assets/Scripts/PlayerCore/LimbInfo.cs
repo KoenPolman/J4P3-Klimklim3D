@@ -40,6 +40,7 @@ public class LimbInfo : MonoBehaviour
     /// <param name="targetHold"></param>
     public void PlaceLimbOnHold(Transform targetHold)
     {
+        /*
         if (handMovement.GetHold() == targetHold)
         {
             return;
@@ -49,6 +50,7 @@ public class LimbInfo : MonoBehaviour
         {
             handMovement.GetHold().GetComponent<Hold>().CheckOut();
         }
+        */
 
         state = LimbState.holding;
         targetHold.GetComponent<Hold>().CheckIn();
