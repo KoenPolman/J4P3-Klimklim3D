@@ -1318,6 +1318,12 @@ MonoBehaviour:
   rightHandRelease:
     m_PersistentCalls:
       m_Calls: []
+  leftFootPlace:
+    m_PersistentCalls:
+      m_Calls: []
+  rightFootPlace:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &361487718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6898,7 +6904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.17, y: 1.89}
+  m_AnchoredPosition: {x: -5.44, y: -2.67}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951579746
