@@ -11,6 +11,8 @@ public class PlayerInput : MonoBehaviour
     [HideInInspector] public UnityEvent rightHandGrab;
     [HideInInspector] public UnityEvent leftHandRelease;
     [HideInInspector] public UnityEvent rightHandRelease;
+    [HideInInspector] public UnityEvent leftFootPlace;
+    [HideInInspector] public UnityEvent rightFootPlace;
     private Camera mainCamera;
     
     private static PlayerInput _instance;
@@ -58,6 +60,15 @@ public class PlayerInput : MonoBehaviour
             rightHandRelease.Invoke();
         }
 
+        if (Keyboard.current.qKey.wasReleasedThisFrame)
+        {
+            leftFootPlace.Invoke();
+        }
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            rightFootPlace.Invoke();
+        }
     }
     
     public Vector3 GetMousePosition()

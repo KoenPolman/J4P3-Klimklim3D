@@ -56,11 +56,10 @@ public class LimbInfo : MonoBehaviour
         targetHold.GetComponent<Hold>().CheckIn();
         handMovement.SetHold(targetHold);
 
-        Debug.Log("Limb has been placed on hold");
+        //Debug.Log("Limb has been placed on hold");S
     }
     public void RemoveLimbFromHold()
     {
-        state = LimbState.resting;
         if (handMovement.GetHold() != null)
         {
             handMovement.GetHold().GetComponent<Hold>().CheckOut();

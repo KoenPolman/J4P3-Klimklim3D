@@ -556,6 +556,9 @@ MonoBehaviour:
   - {fileID: 1198993339348292937}
   - {fileID: 3390584880875225541}
   pickupEffects: {fileID: 0}
+  rate3Limbs: 10
+  rate2Limbs: 15
+  rate1Limb: 25
 --- !u!114 &5438166302938323973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd59a5941fe9c64fa42e830be6a90d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartingPosMover
-  StartPositions: []
+  startPositions: []
 --- !u!1 &4006465917859309735
 GameObject:
   m_ObjectHideFlags: 0
